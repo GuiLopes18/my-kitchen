@@ -71,7 +71,6 @@ Os arquivos CSS de cada tela permanecem próximos dos seus componentes. Isso fac
 
 **Excluir conta:** `ExcluirConta.jsx` chama uma Edge Function responsável por operações privilegiadas. Essa função também não está neste pacote. Nunca implemente exclusão de usuários com `service_role` no frontend.
 
-**Estado do React:** `App.jsx` mantém `receitas` em memória e repassa os dados às páginas. Após salvar, excluir ou marcar como preparada, a lista é atualizada para refletir a mudança sem recarregar a aplicação.
 
 ## Dependências do Supabase
 
@@ -84,8 +83,3 @@ Este repositório é o **frontend**, não uma exportação completa do banco. Pa
 - Edge Functions para receita pública e exclusão de conta, configuradas com as permissões adequadas.
 
 **RLS e autorizações são medidas obrigatórias**, mesmo quando o frontend faz `.eq("user_id", usuarioId)`. Filtrar pelo usuário no navegador não substitui regras no banco.
-
-
-## Para continuar evoluindo
-
-O próximo investimento recomendado é testar o serviço de receitas com mocks do Supabase e manter o SQL/migrations e o código das Edge Functions versionados em uma pasta `supabase/`. Assim será possível reproduzir o backend de maneira segura e revisar o projeto de ponta a ponta.
