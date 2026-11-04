@@ -1,0 +1,1459 @@
+
+/* ==========================================
+   MY KITCHEN - PÁGINA MINHAS RECEITAS
+========================================== */
+
+.colecao-v2 {
+  --colecao-marrom: #552d20;
+  --colecao-laranja: #e27737;
+  --colecao-laranja-escuro: #c96029;
+  --colecao-texto: #78675b;
+  --colecao-borda: #ebded2;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 40px 0 85px;
+
+  background:
+    radial-gradient(
+      ellipse at 2% 2%,
+      rgba(248, 222, 201, 0.18),
+      transparent 35%
+    ),
+    #faf8f5;
+
+  color: var(--colecao-marrom);
+}
+
+.colecao-v2 *,
+.colecao-v2 *::before,
+.colecao-v2 *::after {
+  box-sizing: border-box;
+}
+
+.colecao-v2 button,
+.colecao-v2 input {
+  font-family: inherit;
+}
+
+.colecao-v2-container {
+  width: min(100% - 48px, 1180px);
+  margin-inline: auto;
+}
+
+.colecao-v2-etiqueta {
+  display: block;
+
+  color: #c77545;
+
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: 1.7px;
+}
+
+/* ==========================================
+   1. CABEÇALHO DA COLEÇÃO
+========================================== */
+
+.colecao-v2-cabecalho {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+
+  min-height: 178px;
+  margin-bottom: 28px;
+  padding: 32px 35px;
+
+  overflow: hidden;
+
+  border: 1px solid #f1dccb;
+  border-radius: 19px;
+
+  background:
+    radial-gradient(
+      ellipse at 100% 10%,
+      rgba(245, 189, 146, 0.3),
+      transparent 50%
+    ),
+    linear-gradient(
+      110deg,
+      #fffaf5,
+      #ffecdc
+    );
+}
+
+.colecao-v2-cabecalho::before {
+  content: "";
+
+  position: absolute;
+  right: -100px;
+  bottom: -170px;
+  z-index: -1;
+
+  width: 310px;
+  height: 310px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.colecao-v2-cabecalho-conteudo {
+  position: relative;
+  z-index: 1;
+
+  min-width: 0;
+}
+
+.colecao-v2-cabecalho h1 {
+  margin: 8px 0 12px;
+
+  color: #522b1f;
+
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 850;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+}
+
+.colecao-v2-cabecalho p {
+  max-width: 470px;
+  margin: 0;
+
+  color: #806a5c;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.colecao-v2-cabecalho-decoracao {
+  position: absolute;
+  right: 18%;
+  bottom: -60px;
+  z-index: 0;
+
+  color: rgba(206, 117, 65, 0.1);
+
+  transform: rotate(-13deg);
+  pointer-events: none;
+}
+
+/* Botão Nova receita */
+.colecao-v2-botao-principal {
+  position: relative;
+  z-index: 1;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 9px;
+
+  min-height: 46px;
+  padding: 12px 18px;
+
+  border: 1px solid #d66b2d;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    135deg,
+    #e87937,
+    #d96424
+  );
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  white-space: nowrap;
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 13px rgba(204, 100, 37, 0.13);
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.colecao-v2-botao-principal:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 9px 18px rgba(204, 100, 37, 0.21);
+}
+
+/* ==========================================
+   2. PAINEL DE PESQUISA E FILTROS
+========================================== */
+
+.colecao-v2-filtros {
+  margin-bottom: 33px;
+  padding: 24px 27px;
+
+  border: 1px solid #eadfd4;
+  border-radius: 17px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 5px 20px rgba(73, 43, 26, 0.035);
+}
+
+/* ==========================================
+   3. TÍTULO E LIMPAR FILTROS
+========================================== */
+
+.colecao-v2-filtros-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin-bottom: 11px;
+}
+
+.colecao-v2-filtros-cabecalho label {
+  color: #4e3527;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* Link para limpar todos os filtros */
+.colecao-v2-limpar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  min-height: 30px;
+  padding: 5px 8px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #b96c3e;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.5;
+
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.colecao-v2-limpar:hover {
+  background: #fff2e7;
+  color: #914622;
+}
+
+.colecao-v2-limpar svg {
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   4. CAMPO DE PESQUISA
+========================================== */
+
+.colecao-v2-filtros-topo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.colecao-v2-busca {
+  width: 100%;
+  max-width: 460px;
+  min-width: 0;
+}
+
+.colecao-v2-busca-campo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  min-height: 49px;
+  padding: 0 13px;
+
+  border: 1px solid #e5d9ce;
+  border-radius: 10px;
+
+  background: #fffdfa;
+  color: #ab8972;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.colecao-v2-busca-campo:focus-within {
+  border-color: #e27737;
+
+  box-shadow:
+    0 0 0 3px rgba(226, 119, 55, 0.11);
+}
+
+.colecao-v2-busca-campo > svg {
+  flex-shrink: 0;
+}
+
+.colecao-v2-busca-campo input {
+  flex: 1;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+
+  margin: 0;
+  padding: 9px 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+  color: #4e3527;
+
+  font-size: 13px;
+}
+
+.colecao-v2-busca-campo input::placeholder {
+  color: #a8978a;
+}
+
+/* Limpar somente a pesquisa */
+.colecao-v2-busca-campo button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 29px;
+  height: 29px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #a18b79;
+
+  cursor: pointer;
+}
+
+.colecao-v2-busca-campo button:hover {
+  background: #f8ece1;
+  color: #af6338;
+}
+
+/* Quantidade de resultados */
+.colecao-v2-total {
+  padding-bottom: 14px;
+
+  color: #987d6a;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* ==========================================
+   5. DIVISORES DOS FILTROS
+========================================== */
+
+.colecao-v2-filtros-divisor {
+  width: 100%;
+  height: 1px;
+
+  margin: 23px 0 20px;
+
+  background: #f0e7df;
+}
+
+.colecao-v2-filtros-divisor.secundario {
+  margin: 21px 0 19px;
+}
+
+/* ==========================================
+   6. GRUPOS DE FILTROS
+========================================== */
+
+.colecao-v2-filtros-grupo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  width: 100%;
+}
+
+.colecao-v2-filtros-rotulo {
+  color: #584034;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* ==========================================
+   7. FILTROS POR CATEGORIA
+========================================== */
+
+.colecao-v2-categorias {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  width: 100%;
+}
+
+.colecao-v2-categoria {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: auto;
+  min-height: 42px;
+
+  margin: 0;
+  padding: 10px 14px;
+
+  border: 1px solid #e6d8cc;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #715b4c;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.colecao-v2-categoria svg {
+  flex-shrink: 0;
+  color: #b66b3e;
+}
+
+.colecao-v2-categoria:hover:not(.ativa) {
+  border-color: #dfa67e;
+
+  background: #fff2e7;
+  color: #aa6034;
+}
+
+.colecao-v2-categoria.ativa {
+  border-color: #e27737;
+
+  background: #e27737;
+  color: #ffffff;
+}
+
+.colecao-v2-categoria.ativa svg {
+  color: #ffffff;
+}
+
+/* ==========================================
+   8. FILTROS DE RECEITAS PREPARADAS
+========================================== */
+
+.colecao-v2-preparo-opcoes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  width: 100%;
+}
+
+.colecao-v2-preparo-opcao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 42px;
+  padding: 10px 14px;
+
+  border: 1px solid #e6d8cc;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #715b4c;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.colecao-v2-preparo-opcao svg {
+  flex-shrink: 0;
+
+  color: #76916a;
+}
+
+.colecao-v2-preparo-opcao:hover:not(.ativa) {
+  border-color: #b5c9a9;
+
+  background: #f2f7ef;
+  color: #536f49;
+}
+
+.colecao-v2-preparo-opcao.ativa {
+  border-color: #e27737;
+
+  background: #e27737;
+  color: #ffffff;
+}
+
+.colecao-v2-preparo-opcao.ativa svg {
+  color: #ffffff;
+}
+
+/* ==========================================
+   9. DISTRIBUIÇÃO DA PÁGINA
+========================================== */
+
+.colecao-v2-distribuicao {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    285px;
+
+  align-items: start;
+  gap: 26px;
+}
+
+.colecao-v2-principal {
+  min-width: 0;
+}
+
+.colecao-v2-lista-cabecalho {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.colecao-v2-lista-cabecalho h2 {
+  margin: 7px 0 0;
+
+  color: #552d20;
+
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+/* ==========================================
+   10. GRADE DE RECEITAS
+========================================== */
+
+.colecao-v2-grade {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  align-items: stretch;
+  gap: 21px;
+}
+
+/* ==========================================
+   11. CARD DA RECEITA
+========================================== */
+
+.colecao-v2-card {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  overflow: hidden;
+
+  border: 1px solid #eadfd5;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 5px 16px rgba(73, 45, 28, 0.035);
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+
+.colecao-v2-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #e4c5ae;
+
+  box-shadow:
+    0 12px 24px rgba(73, 45, 28, 0.08);
+}
+
+/* Fotografia */
+.colecao-v2-card-imagem {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 205px;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  border: none;
+  border-radius: 0;
+
+  background: #f3e5d8;
+
+  cursor: pointer;
+}
+
+.colecao-v2-card-imagem > img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.35s;
+}
+
+.colecao-v2-card:hover
+  .colecao-v2-card-imagem > img {
+  transform: scale(1.04);
+}
+
+/* Receita sem fotografia */
+.colecao-v2-card-sem-foto {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  color: #ca8c60;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 251, 247, 0.75),
+      transparent 50%
+    ),
+    #f3e5d8;
+}
+
+.colecao-v2-card-circulo {
+  position: absolute;
+
+  width: 122px;
+  height: 122px;
+
+  border: 1px solid rgba(198, 134, 86, 0.2);
+  border-radius: 50%;
+}
+
+.colecao-v2-card-sem-foto svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* Selo de receita preparada */
+.colecao-v2-card-selo {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 7px 10px;
+
+  border: 1px solid #bfd6b7;
+  border-radius: 8px;
+
+  background: rgba(247, 252, 244, 0.97);
+  color: #507448;
+
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.3;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 3px 10px rgba(54, 87, 42, 0.08);
+}
+
+/* ==========================================
+   12. CONTEÚDO DO CARD
+========================================== */
+
+.colecao-v2-card-conteudo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  min-width: 0;
+  padding: 20px;
+}
+
+.colecao-v2-card-categoria {
+  color: #bc7347;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.colecao-v2-card-conteudo h3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+
+  margin: 0;
+  overflow: hidden;
+
+  color: #4b2f22;
+
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.35;
+
+  overflow-wrap: anywhere;
+}
+
+/* Tempo, dificuldade e porções */
+.colecao-v2-card-dados {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+
+  color: #897464;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.colecao-v2-card-dados > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.colecao-v2-card-dados svg {
+  flex-shrink: 0;
+
+  color: #be8059;
+}
+
+.colecao-v2-card-ponto {
+  color: #c4afa0;
+}
+
+/* Tags */
+.colecao-v2-card-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.colecao-v2-card-tags span {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 9px;
+
+  border-radius: 7px;
+
+  background: #edf3e9;
+  color: #667d5b;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Ver receita */
+.colecao-v2-card-botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 41px;
+  margin-top: auto;
+  padding: 10px 15px;
+
+  border: 1px solid #efc8a9;
+  border-radius: 9px;
+
+  background: #fff3e9;
+  color: #ac6236;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.colecao-v2-card-botao:hover {
+  background: #ffe8d6;
+}
+
+/* ==========================================
+   13. PAINEL LATERAL
+========================================== */
+
+.colecao-v2-lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  min-width: 0;
+}
+
+.colecao-v2-resumo,
+.colecao-v2-dica {
+  border: 1px solid #eadfd4;
+  border-radius: 16px;
+
+  box-shadow:
+    0 5px 17px rgba(73, 45, 28, 0.035);
+}
+
+/* Card de resumo */
+.colecao-v2-resumo {
+  padding: 22px;
+
+  background: #ffffff;
+}
+
+.colecao-v2-resumo-titulo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding-bottom: 21px;
+
+  border-bottom: 1px solid #f0e6dd;
+}
+
+.colecao-v2-resumo-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 12px;
+
+  background: #fff0e3;
+  color: #c9753c;
+}
+
+.colecao-v2-resumo-titulo h2 {
+  margin: 0 0 5px;
+
+  color: #543527;
+
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.colecao-v2-resumo-titulo p {
+  margin: 0;
+
+  color: #9a8474;
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   14. ESTATÍSTICAS DO PAINEL
+========================================== */
+
+.colecao-v2-resumo-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+
+  padding: 23px 0;
+}
+
+.colecao-v2-resumo-item {
+  display: grid;
+  grid-template-columns:
+    35px
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+  gap: 10px;
+}
+
+.colecao-v2-resumo-item-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 35px;
+  height: 35px;
+
+  border-radius: 9px;
+}
+
+.colecao-v2-resumo-item-icone.laranja {
+  background: #fff0e4;
+  color: #d87a3d;
+}
+
+.colecao-v2-resumo-item-icone.verde {
+  background: #edf5e9;
+  color: #6e895e;
+}
+
+.colecao-v2-resumo-item-icone.bege {
+  background: #f5ebdf;
+  color: #a97852;
+}
+
+.colecao-v2-resumo-item > span:nth-child(2) {
+  color: #77665a;
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.colecao-v2-resumo-item strong {
+  color: #55382a;
+
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* ==========================================
+   15. BARRA DE PROGRESSO
+========================================== */
+
+.colecao-v2-progresso {
+  padding: 20px 0;
+
+  border-top: 1px solid #f0e6dd;
+}
+
+.colecao-v2-progresso-texto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 11px;
+}
+
+.colecao-v2-progresso-texto span {
+  color: #6e5a4b;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.colecao-v2-progresso-texto strong {
+  color: #608052;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.colecao-v2-progresso-barra {
+  width: 100%;
+  height: 8px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+  background: #e9efe5;
+}
+
+.colecao-v2-progresso-barra span {
+  display: block;
+
+  height: 100%;
+
+  border-radius: inherit;
+  background: #8eaf7e;
+
+  transition: width 0.25s;
+}
+
+.colecao-v2-progresso small {
+  display: block;
+  margin-top: 10px;
+
+  color: #9b8878;
+  font-size: 11px;
+}
+
+/* Categoria principal */
+.colecao-v2-categoria-favorita {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #f0e6dd;
+}
+
+.colecao-v2-categoria-favorita span {
+  color: #978170;
+  font-size: 11px;
+}
+
+.colecao-v2-categoria-favorita strong {
+  color: #b86b3d;
+
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   16. CARD DE DICA
+========================================== */
+
+.colecao-v2-dica {
+  position: relative;
+
+  padding: 22px;
+  overflow: hidden;
+
+  background: linear-gradient(
+    140deg,
+    #fff9f3,
+    #ffeddd
+  );
+}
+
+.colecao-v2-dica-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 43px;
+  height: 43px;
+
+  margin-bottom: 17px;
+
+  border-radius: 11px;
+
+  background: #ffe1c9;
+  color: #ce7839;
+}
+
+.colecao-v2-dica h2 {
+  margin: 0 0 11px;
+
+  color: #553529;
+
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.colecao-v2-dica p {
+  margin: 0;
+
+  color: #856b59;
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.colecao-v2-dica p strong {
+  color: #a65d30;
+}
+
+/* ==========================================
+   17. ESTADO VAZIO
+========================================== */
+
+.colecao-v2-estado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  min-height: 360px;
+  padding: 38px 22px;
+
+  border: 1px solid #eadfd4;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  color: #c88c61;
+  text-align: center;
+}
+
+.colecao-v2-estado > img {
+  display: block;
+
+  width: 155px;
+  max-width: 75%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.colecao-v2-estado h3 {
+  margin: 0;
+
+  color: #543527;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.colecao-v2-estado p {
+  max-width: 350px;
+  margin: 0;
+
+  color: #8e7b6e;
+
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.colecao-v2-estado button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  min-height: 43px;
+  margin-top: 7px;
+  padding: 11px 15px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #e27737;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.colecao-v2-estado button:hover {
+  background: #c96029;
+}
+
+/* ==========================================
+   18. RESPONSIVIDADE - NOTEBOOKS
+========================================== */
+
+@media (max-width: 1050px) {
+  .colecao-v2-distribuicao {
+    grid-template-columns:
+      minmax(0, 1fr)
+      260px;
+
+    gap: 20px;
+  }
+
+  .colecao-v2-grade {
+    gap: 15px;
+  }
+
+  .colecao-v2-card-conteudo {
+    padding: 17px;
+  }
+
+  .colecao-v2-resumo,
+  .colecao-v2-dica {
+    padding: 18px;
+  }
+}
+
+/* ==========================================
+   19. RESPONSIVIDADE - TABLETS
+========================================== */
+
+@media (max-width: 850px) {
+  .colecao-v2-distribuicao {
+    grid-template-columns: 1fr;
+  }
+
+  .colecao-v2-lateral {
+    display: grid;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    align-items: start;
+  }
+
+  .colecao-v2-card-imagem {
+    height: 220px;
+  }
+
+  .colecao-v2-categorias,
+  .colecao-v2-preparo-opcoes {
+    gap: 8px;
+  }
+}
+
+/* ==========================================
+   20. RESPONSIVIDADE - CELULARES
+========================================== */
+
+@media (max-width: 600px) {
+  .colecao-v2 {
+    padding: 24px 0 60px;
+  }
+
+  .colecao-v2-container {
+    width: min(100% - 32px, 1180px);
+  }
+
+  /* Cabeçalho */
+  .colecao-v2-cabecalho {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+
+    min-height: 0;
+    padding: 25px 22px;
+  }
+
+  .colecao-v2-cabecalho h1 {
+    font-size: 29px;
+  }
+
+  .colecao-v2-cabecalho-decoracao {
+    right: -25px;
+    bottom: -45px;
+  }
+
+  /* Painel de filtros */
+  .colecao-v2-filtros {
+    margin-bottom: 28px;
+    padding: 21px 17px;
+  }
+
+  .colecao-v2-filtros-cabecalho {
+    align-items: center;
+    margin-bottom: 13px;
+  }
+
+  .colecao-v2-filtros-cabecalho label {
+    font-size: 12px;
+  }
+
+  .colecao-v2-limpar {
+    font-size: 11px;
+  }
+
+  .colecao-v2-filtros-topo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 11px;
+  }
+
+  .colecao-v2-busca {
+    max-width: none;
+  }
+
+  .colecao-v2-total {
+    padding-bottom: 0;
+  }
+
+  .colecao-v2-filtros-divisor {
+    margin: 18px 0;
+  }
+
+  .colecao-v2-filtros-divisor.secundario {
+    margin: 19px 0 17px;
+  }
+
+  /* Categorias */
+  .colecao-v2-categorias {
+    gap: 8px;
+  }
+
+  .colecao-v2-categoria {
+    min-height: 40px;
+
+    padding: 9px 12px;
+    gap: 7px;
+
+    font-size: 12px;
+  }
+
+  .colecao-v2-categoria svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Receitas preparadas */
+  .colecao-v2-preparo-opcoes {
+    gap: 8px;
+  }
+
+  .colecao-v2-preparo-opcao {
+    min-height: 40px;
+
+    padding: 9px 12px;
+    gap: 7px;
+
+    font-size: 12px;
+  }
+
+  .colecao-v2-preparo-opcao svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Lista */
+  .colecao-v2-lista-cabecalho h2 {
+    font-size: 22px;
+  }
+
+  .colecao-v2-grade {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .colecao-v2-card-imagem {
+    height: 210px;
+  }
+
+  .colecao-v2-card-conteudo {
+    padding: 19px;
+  }
+
+  /* Painel lateral */
+  .colecao-v2-lateral {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .colecao-v2-resumo,
+  .colecao-v2-dica {
+    padding: 22px;
+  }
+}
+
+/* ==========================================
+   21. CELULARES PEQUENOS
+========================================== */
+
+@media (max-width: 390px) {
+  .colecao-v2-container {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .colecao-v2-cabecalho {
+    padding: 22px 18px;
+  }
+
+  .colecao-v2-filtros {
+    padding: 18px 14px;
+  }
+
+  .colecao-v2-filtros-cabecalho {
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+
+  .colecao-v2-categoria,
+  .colecao-v2-preparo-opcao {
+    padding: 9px 10px;
+    gap: 6px;
+
+    font-size: 11px;
+  }
+
+  .colecao-v2-lista-cabecalho {
+    align-items: flex-start;
+  }
+
+  .colecao-v2-card-imagem {
+    height: 190px;
+  }
+}
+
+/* ==========================================
+   22. ACESSIBILIDADE
+========================================== */
+
+.colecao-v2 button:focus-visible,
+.colecao-v2 input:focus-visible {
+  outline: 3px solid rgba(226, 119, 55, 0.35);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .colecao-v2 *,
+  .colecao-v2 *::before,
+  .colecao-v2 *::after {
+    scroll-behavior: auto;
+    transition: none;
+  }
+
+  .colecao-v2-card:hover,
+  .colecao-v2-botao-principal:hover {
+    transform: none;
+  }
+}

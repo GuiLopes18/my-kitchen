@@ -1,0 +1,551 @@
+
+/* ==================================
+   BOTÃO COMPARTILHAR
+================================== */
+
+.share-botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 12px 16px;
+
+  border: 1px solid #c9d9c1;
+  border-radius: 10px;
+
+  background: #edf1e9;
+  color: #59704d;
+
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.share-botao:hover {
+  background: #e1e9dc;
+}
+
+/* ==================================
+   JANELA DE COMPARTILHAMENTO
+================================== */
+
+.share-dialog {
+  position: fixed;
+
+  width: calc(100% - 32px);
+  max-width: 480px;
+  max-height: 90vh;
+
+  margin: auto;
+  padding: 30px;
+
+  overflow-y: auto;
+
+  border: 1px solid #ece4da;
+  border-radius: 18px;
+
+  background: #fff;
+  color: #282621;
+
+  box-shadow: 0 20px 65px #2e211f30;
+}
+
+.share-dialog::backdrop {
+  background: rgba(34, 27, 22, 0.55);
+}
+
+.share-dialog-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.share-dialog-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 14px;
+  background: #edf1e9;
+  color: #59704d;
+}
+
+.share-fechar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 35px;
+  height: 35px;
+
+  border: none;
+  border-radius: 8px;
+  background: #f5f2ee;
+  color: #777169;
+  cursor: pointer;
+}
+
+.share-dialog h2 {
+  margin: 0 0 13px;
+  color: #492c1c;
+  font-size: 27px;
+}
+
+.share-descricao {
+  margin: 0 0 25px;
+
+  color: #777169;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.share-carregando {
+  padding: 25px 0;
+  color: #777169;
+  text-align: center;
+}
+
+/* ==================================
+   SEM LINK ATIVO
+================================== */
+
+.share-estado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  padding: 25px 18px;
+
+  border: 1px dashed #dccfbe;
+  border-radius: 12px;
+
+  background: #faf8f4;
+  color: #99714b;
+  text-align: center;
+}
+
+.share-estado strong {
+  color: #492c1c;
+  font-size: 15px;
+}
+
+.share-estado p {
+  margin: 0 0 7px;
+  color: #777169;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ==================================
+   LINK ATIVO
+================================== */
+
+.share-link-ativo {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.share-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  align-self: flex-start;
+  margin: 0 0 6px;
+
+  padding: 8px 12px;
+
+  border-radius: 25px;
+  background: #edf1e9;
+
+  color: #59704d;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.share-link-ativo label {
+  color: #282621;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.share-link-ativo input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 13px;
+
+  border: 1px solid #e4ded6;
+  border-radius: 9px;
+
+  background: #faf8f4;
+  color: #625b54;
+
+  font-size: 13px;
+  text-overflow: ellipsis;
+}
+
+/* Botão de criar e copiar */
+.share-principal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  width: 100%;
+  padding: 14px 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #db8958;
+  color: #fff;
+
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.share-principal:hover:not(:disabled) {
+  background: #bd6d3d;
+}
+
+/* Botão de desativar */
+.share-revogar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  width: 100%;
+  padding: 13px;
+
+  border: 1px solid #f0c9c4;
+  border-radius: 10px;
+
+  background: #fff0ed;
+  color: #a43d31;
+
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.share-revogar:hover:not(:disabled) {
+  background: #ffe2dc;
+}
+
+.share-principal:disabled,
+.share-revogar:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.share-erro,
+.share-sucesso {
+  padding: 13px;
+  border-radius: 9px;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.share-erro {
+  background: #fff0ed;
+  color: #a43d31;
+}
+
+.share-sucesso {
+  background: #edf1e9;
+  color: #405536;
+}
+
+/* ==================================
+   PÁGINA PÚBLICA DA RECEITA
+================================== */
+
+.share-pagina {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  background: #faf8f4;
+  color: #282621;
+}
+
+/* Cabeçalho público */
+.share-cabecalho-publico {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 20px max(
+    24px,
+    calc((100vw - 1040px) / 2)
+  );
+
+  border-bottom: 1px solid #ece4da;
+  background: #fff;
+}
+
+.share-marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #9b5d35;
+  text-decoration: none;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.share-cabecalho-publico > span {
+  color: #777169;
+  font-size: 13px;
+}
+
+/* Conteúdo */
+.share-conteudo-publico {
+  flex: 1;
+
+  width: 100%;
+  max-width: 1050px;
+
+  margin: 0 auto;
+  padding: 60px 24px 85px;
+}
+
+.share-receita-publica h1 {
+  margin: 14px 0 18px;
+
+  color: #492c1c;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.2;
+}
+
+.share-etiqueta {
+  color: #b97549;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.share-resumo {
+  max-width: 720px;
+  margin-bottom: 25px;
+
+  color: #777169;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Tempo, dificuldade e porções */
+.share-dados {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+
+  margin: 28px 0;
+}
+
+.share-dados span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #68574c;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.share-dados svg {
+  color: #b97549;
+}
+
+/* Fotografia */
+.share-foto {
+  display: block;
+
+  width: 100%;
+  max-height: 460px;
+  margin: 28px 0 35px;
+
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+/* Ingredientes e modo de preparo */
+.share-grade {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.8fr) 1.2fr;
+  gap: 25px;
+}
+
+.share-bloco {
+  min-width: 0;
+  padding: 28px;
+
+  border: 1px solid #ece4da;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.share-bloco h2 {
+  margin: 0 0 22px;
+  color: #492c1c;
+  font-size: 23px;
+}
+
+.share-bloco ul,
+.share-bloco ol {
+  margin: 0;
+  padding-left: 23px;
+}
+
+.share-bloco li {
+  margin-bottom: 15px;
+
+  color: #514a44;
+  font-size: 14px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.share-bloco li::marker {
+  color: #b97549;
+}
+
+.share-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  margin-top: 25px;
+}
+
+.share-tags span {
+  padding: 8px 12px;
+  border-radius: 20px;
+
+  background: #edf1e9;
+  color: #59704d;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Retorno ao aplicativo */
+.share-visitar,
+.share-resultado a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  margin-top: 35px;
+  padding: 13px 17px;
+
+  border-radius: 10px;
+
+  background: #db8958;
+  color: #fff;
+
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.share-visitar:hover,
+.share-resultado a:hover {
+  background: #bd6d3d;
+}
+
+/* Link inválido ou revogado */
+.share-resultado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 410px;
+
+  color: #b97549;
+  text-align: center;
+}
+
+.share-resultado h1 {
+  margin-bottom: 10px;
+  color: #492c1c;
+  font-size: 30px;
+}
+
+.share-resultado p {
+  max-width: 450px;
+
+  color: #777169;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Rodapé */
+.share-rodape {
+  padding: 25px 20px;
+
+  border-top: 1px solid #ece4da;
+  background: #fff;
+
+  color: #777169;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* ==================================
+   CELULARES
+================================== */
+
+@media (max-width: 700px) {
+  .share-cabecalho-publico {
+    padding: 18px 20px;
+  }
+
+  .share-marca {
+    font-size: 18px;
+  }
+
+  .share-cabecalho-publico > span {
+    display: none;
+  }
+
+  .share-conteudo-publico {
+    padding: 40px 20px 60px;
+  }
+
+  .share-grade {
+    grid-template-columns: 1fr;
+  }
+
+  .share-bloco {
+    padding: 22px;
+  }
+
+  .share-dados {
+    gap: 17px;
+  }
+
+  .share-dialog {
+    padding: 23px;
+  }
+
+  .share-dialog h2 {
+    font-size: 23px;
+  }
+}

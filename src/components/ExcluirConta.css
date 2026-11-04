@@ -1,0 +1,282 @@
+
+/* ==========================================
+   MY KITCHEN - EXCLUSÃO DE CONTA
+========================================== */
+
+/* ==========================================
+   1. GERENCIAMENTO DA CONTA
+========================================== */
+
+.exclusao-card {
+  margin-top: 24px;
+
+  border: 1px solid #f0c9c4;
+  background: #fffdfc;
+}
+
+.exclusao-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding-bottom: 24px;
+
+  border-bottom: 1px solid #f0dedb;
+}
+
+.exclusao-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 13px;
+
+  background: #fff0ed;
+  color: #b04436;
+}
+
+.exclusao-cabecalho h2 {
+  margin: 0 0 8px;
+
+  color: #a43d31;
+  font-size: 22px;
+}
+
+.exclusao-cabecalho p {
+  margin: 0;
+
+  color: #777169;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   2. CONTEÚDO DO GERENCIAMENTO DA CONTA
+========================================== */
+
+.exclusao-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+
+  padding-top: 26px;
+}
+
+.exclusao-conteudo h3 {
+  margin: 0 0 10px;
+
+  color: #432c20;
+  font-size: 18px;
+}
+
+.exclusao-conteudo p {
+  max-width: 420px;
+  margin: 0;
+
+  color: #777169;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* Botão Excluir minha conta */
+.exclusao-botao-iniciar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex-shrink: 0;
+
+  min-height: 43px;
+  padding: 12px 16px;
+
+  border: 1px solid #e8b8b1;
+  border-radius: 10px;
+
+  background: #fff0ed;
+  color: #a43d31;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.exclusao-botao-iniciar:hover {
+  background: #ffe2dc;
+}
+
+/* ==========================================
+   3. CHECKBOX DE CONFIRMAÇÃO
+========================================== */
+
+/* Organiza o checkbox e o texto lado a lado */
+.mk-modal .exclusao-ciencia {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 12px;
+
+  width: 100%;
+  margin: 0 0 26px;
+  padding: 0;
+
+  color: #5f534b;
+  cursor: pointer;
+}
+
+/* Checkbox */
+.mk-modal .exclusao-ciencia input[type="checkbox"] {
+  display: block;
+  appearance: auto;
+
+  width: 18px;
+  height: 18px;
+
+  margin: 3px 0 0;
+  padding: 0;
+
+  accent-color: #b04436;
+  cursor: pointer;
+}
+
+/* Texto de confirmação */
+.mk-modal .exclusao-ciencia span {
+  display: block;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  color: #5f534b;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.7;
+
+  overflow-wrap: break-word;
+}
+
+/* ==========================================
+   4. CAMPO EXCLUIR CONTA
+========================================== */
+
+/* Mantém o rótulo acima do input */
+.mk-modal .exclusao-campo {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 11px;
+
+  width: 100%;
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+/* Texto acima do campo */
+.mk-modal .exclusao-campo label {
+  display: block;
+
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  color: #35261f;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.mk-modal .exclusao-campo label strong {
+  color: #a43d31;
+  font-weight: 800;
+}
+
+/* Input de confirmação */
+.mk-modal .exclusao-campo input[type="text"] {
+  display: block;
+  box-sizing: border-box;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 47px;
+
+  margin: 0;
+  padding: 12px 15px;
+
+  border: 1px solid #e8b8b1;
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #35261f;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+/* Placeholder */
+.mk-modal .exclusao-campo input[type="text"]::placeholder {
+  color: #a99a91;
+  font-weight: 400;
+}
+
+/* Destaque ao selecionar */
+.mk-modal .exclusao-campo input[type="text"]:focus {
+  border-color: #b04436;
+
+  box-shadow:
+    0 0 0 3px rgba(176, 68, 54, 0.12);
+}
+
+/* Campos desativados durante a exclusão */
+.mk-modal .exclusao-ciencia input:disabled,
+.mk-modal .exclusao-campo input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   5. RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 700px) {
+  .exclusao-conteudo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .exclusao-botao-iniciar {
+    width: 100%;
+  }
+
+  .exclusao-cabecalho h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 390px) {
+  .mk-modal .exclusao-ciencia {
+    column-gap: 10px;
+    margin-bottom: 23px;
+  }
+
+  .mk-modal .exclusao-ciencia span {
+    font-size: 12px;
+  }
+
+  .mk-modal .exclusao-campo {
+    gap: 9px;
+  }
+}

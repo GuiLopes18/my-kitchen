@@ -1,0 +1,946 @@
+
+/* ==========================================
+   MY KITCHEN - FORMULÁRIO DE RECEITAS
+========================================== */
+
+.receitas:has(> .form-receita)
+  > .titulo-secao
+  .botao-nova-receita {
+  display: none;
+}
+
+.form-receita {
+  width: 100%;
+  margin: 12px 0 35px;
+  padding: 32px;
+
+  border: 1px solid #ece3db;
+  border-radius: 20px;
+
+  background: #ffffff;
+  color: #35261f;
+
+  box-shadow:
+    0 8px 30px rgba(69, 43, 27, 0.04);
+}
+
+.form-receita *,
+.form-receita *::before,
+.form-receita *::after {
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   1. CABEÇALHO
+========================================== */
+
+.form-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+
+  margin-bottom: 32px;
+}
+
+.form-topo h2 {
+  margin: 9px 0 10px;
+
+  color: #552d20;
+  font-size: 29px;
+  font-weight: 800;
+}
+
+.form-topo p {
+  margin: 0;
+
+  color: #85776b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.form-botao-secundario,
+.form-voltar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 43px;
+  padding: 11px 16px;
+
+  border: 1px solid #e5dacf;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #735b4b;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.form-botao-secundario:hover,
+.form-voltar:hover {
+  background: #faf5f0;
+}
+
+/* ==========================================
+   2. INDICADORES DAS ETAPAS
+========================================== */
+
+.form-etapas {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+
+  margin-bottom: 19px;
+}
+
+.form-etapa-indicador {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 0;
+  color: #a49386;
+}
+
+.form-etapa-numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid #e9ddd2;
+  border-radius: 50%;
+
+  background: #f8f4ef;
+  color: #a18b7b;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.form-etapa-texto {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-etapa-indicador.atual {
+  color: #bb6835;
+}
+
+.form-etapa-indicador.atual .form-etapa-numero {
+  border-color: #e27737;
+  background: #e27737;
+  color: #ffffff;
+}
+
+.form-etapa-indicador.concluida {
+  color: #647b58;
+}
+
+.form-etapa-indicador.concluida .form-etapa-numero {
+  border-color: #b6c8ae;
+  background: #eaf2e6;
+  color: #58734c;
+}
+
+/* Barra de progresso */
+.form-progresso {
+  height: 6px;
+  margin-bottom: 32px;
+
+  overflow: hidden;
+  border-radius: 20px;
+
+  background: #f3ebe4;
+}
+
+.form-progresso > div {
+  height: 100%;
+
+  border-radius: inherit;
+  background: #e27737;
+
+  transition: width 0.25s;
+}
+
+/* ==========================================
+   3. ÁREA DOS CAMPOS
+========================================== */
+
+.form-etapa-cabecalho {
+  margin-bottom: 24px;
+}
+
+.form-etapa-contador {
+  color: #c47747;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+
+.form-etapa-cabecalho h3 {
+  margin: 9px 0 0;
+
+  color: #552d20;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.form-conteudo-campos {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+
+  border: none;
+}
+
+.form-secao {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  min-width: 0;
+}
+
+.form-campo > label {
+  color: #4a3529;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.form-obrigatorio {
+  color: #ce5641;
+}
+
+.form-receita
+  .form-campo
+  input:not([type="file"]),
+.form-receita .form-campo select,
+.form-receita .form-campo textarea {
+  display: block;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+
+  padding: 11px 13px;
+
+  border: 1px solid #e5dacf;
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #35261f;
+
+  font: inherit;
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.form-receita .form-campo textarea {
+  resize: vertical;
+  line-height: 1.65;
+}
+
+.form-receita
+  .form-campo
+  input:focus,
+.form-receita
+  .form-campo
+  select:focus,
+.form-receita
+  .form-campo
+  textarea:focus {
+  border-color: #e27737;
+
+  box-shadow:
+    0 0 0 3px rgba(226, 119, 55, 0.12);
+}
+
+.form-receita
+  .form-campo
+  [aria-invalid="true"] {
+  border-color: #d24b40;
+  background: #fffafa;
+}
+
+.form-receita input::placeholder,
+.form-receita textarea::placeholder {
+  color: #a99a8e;
+}
+
+.form-linha {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.form-legenda,
+.form-ajuda {
+  margin: 0;
+
+  color: #897a6f;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.form-erro {
+  display: block;
+
+  color: #c74437;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   4. TEMPO DE PREPARO
+========================================== */
+
+.form-tempo-campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.form-tempo-item {
+  position: relative;
+
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Etiquetas dentro dos inputs */
+.form-receita .form-campo .form-tempo-item label {
+  position: absolute;
+
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+
+  width: 65px;
+  height: 24px;
+
+  margin: 0;
+  padding: 0 8px 0 0;
+
+  border-right: 1px solid #e9ddd2;
+
+  color: #927a69;
+  font-size: 12px;
+  font-weight: 600;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.form-receita .form-campo .form-tempo-item input {
+  display: block;
+
+  width: 100%;
+  height: 46px;
+  min-height: 46px;
+
+  padding: 11px 12px 11px 88px;
+
+  border: 1px solid #e5dacf;
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #35261f;
+
+  font: inherit;
+  font-size: 14px;
+}
+
+.form-receita
+  .form-campo
+  .form-tempo-item
+  input:focus {
+  border-color: #e27737;
+
+  box-shadow:
+    0 0 0 3px rgba(226, 119, 55, 0.12);
+}
+
+.form-receita
+  .form-campo
+  .form-tempo-item
+  input[aria-invalid="true"] {
+  border-color: #d24b40;
+  background: #fffafa;
+}
+
+.form-tempo-ajuda {
+  display: block;
+
+  margin-top: 0;
+
+  color: #8c7f74;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   5. INGREDIENTES E PASSOS
+========================================== */
+
+.form-lista-itens {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.form-item-grupo {
+  min-width: 0;
+  padding: 20px;
+
+  border: 1px solid #eee3d9;
+  border-radius: 13px;
+
+  background: #fffdfa;
+}
+
+.form-item-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-bottom: 16px;
+}
+
+.form-item-topo strong {
+  color: #5b4131;
+  font-size: 14px;
+}
+
+.form-item-acoes {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.form-item-acoes button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+
+  border: 1px solid #e8dbd0;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #9d6946;
+
+  cursor: pointer;
+}
+
+.form-item-acoes button:hover:not(:disabled) {
+  background: #fff0e6;
+}
+
+.form-receita button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.form-ingrediente {
+  display: grid;
+  grid-template-columns:
+    minmax(100px, 0.8fr)
+    minmax(130px, 1fr)
+    minmax(0, 2fr);
+  gap: 13px;
+
+  align-items: start;
+}
+
+.form-botao-adicionar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  width: fit-content;
+  min-height: 42px;
+
+  padding: 11px 15px;
+
+  border: 1px dashed #dba274;
+  border-radius: 10px;
+
+  background: #fff8f1;
+  color: #ae673c;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.form-botao-adicionar:hover {
+  background: #ffeddd;
+}
+
+/* ==========================================
+   6. FINALIZAÇÃO
+========================================== */
+
+.form-finalizacao {
+  padding-bottom: 25px;
+  border-bottom: 1px solid #eee3d9;
+}
+
+.form-finalizacao:last-child {
+  border-bottom: none;
+}
+
+.form-finalizacao h4,
+.form-revisao h4 {
+  margin: 0 0 12px;
+
+  color: #552d20;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.form-finalizacao > .form-legenda {
+  margin-bottom: 15px;
+}
+
+/* Tags */
+.form-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.form-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 10px 13px;
+
+  border: 1px solid #e6d9cc;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #786454;
+
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.form-tag.selecionada {
+  border-color: #a9c19e;
+  background: #edf4e9;
+  color: #55764b;
+}
+
+/* Fotografia */
+.form-foto-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.form-preview-container {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.form-preview {
+  display: block;
+
+  width: min(100%, 350px);
+  max-height: 260px;
+
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.form-remover-foto {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 10px;
+  padding: 9px 11px;
+
+  border: 1px solid #efc8c2;
+  border-radius: 9px;
+
+  background: #fff2ef;
+  color: #b34a3b;
+
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.form-foto-vazia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-height: 150px;
+  width: min(100%, 350px);
+
+  padding: 22px;
+
+  border: 1px dashed #e9d2bd;
+  border-radius: 12px;
+
+  background: #fffaf5;
+  color: #aa8c74;
+
+  font-size: 12px;
+}
+
+.form-input-foto {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.form-input-foto:focus-visible
+  + .form-botao-adicionar {
+  outline: 2px solid #e27737;
+}
+
+/* ==========================================
+   7. NOVO: OBSERVAÇÕES
+========================================== */
+
+.form-receita
+  .form-campo
+  .form-observacoes {
+  min-height: 130px;
+
+  padding: 14px 15px;
+
+  border-radius: 11px;
+
+  background: #fffdfa;
+  line-height: 1.75;
+}
+
+/* ==========================================
+   8. NOVO: JÁ PREPAREI
+========================================== */
+
+.form-cozinhei-opcao {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+
+  padding: 18px;
+
+  border: 1px solid #e2e8dd;
+  border-radius: 13px;
+
+  background: #f8fbf6;
+  cursor: pointer;
+}
+
+.form-cozinhei-opcao
+  input[type="checkbox"] {
+  flex-shrink: 0;
+
+  width: 18px;
+  height: 18px;
+
+  margin: 4px 0 0;
+  padding: 0;
+
+  accent-color: #647b58;
+  cursor: pointer;
+}
+
+.form-cozinhei-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  color: #758a69;
+}
+
+.form-cozinhei-opcao > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  min-width: 0;
+}
+
+.form-cozinhei-opcao strong {
+  color: #48603f;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.form-cozinhei-opcao small {
+  color: #798771;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.form-cozinhei-opcao:has(input:checked) {
+  border-color: #b9d2ad;
+  background: #edf5e9;
+}
+
+/* ==========================================
+   9. REVISÃO
+========================================== */
+
+.form-revisao {
+  padding: 20px;
+
+  border: 1px solid #eee1d5;
+  border-radius: 12px;
+
+  background: #faf7f3;
+}
+
+.form-revisao p {
+  margin: 8px 0;
+
+  color: #776458;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   10. NAVEGAÇÃO
+========================================== */
+
+.form-resumo-erro {
+  margin-top: 20px;
+  padding: 13px 15px;
+
+  border: 1px solid #f0c3bb;
+  border-radius: 10px;
+
+  background: #fff1ee;
+  color: #b24435;
+
+  font-size: 13px;
+}
+
+.form-navegacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin-top: 32px;
+  padding-top: 24px;
+
+  border-top: 1px solid #eee3d9;
+}
+
+.form-salvar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 44px;
+  padding: 12px 20px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #e27737;
+  color: #ffffff;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.form-salvar:hover:not(:disabled) {
+  background: #c96029;
+}
+
+/* ==========================================
+   11. RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 850px) {
+  .form-receita {
+    padding: 25px;
+  }
+
+  .form-ingrediente {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .form-ingrediente
+    .form-campo:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-receita {
+    padding: 20px 16px;
+    border-radius: 15px;
+  }
+
+  .form-topo {
+    flex-direction: column;
+    gap: 17px;
+  }
+
+  .form-topo h2 {
+    font-size: 24px;
+  }
+
+  .form-etapas {
+    gap: 6px;
+  }
+
+  .form-etapa-indicador {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-etapa-numero {
+    width: 30px;
+    height: 30px;
+  }
+
+  .form-etapa-texto {
+    font-size: 9px;
+    text-align: center;
+  }
+
+  .form-linha {
+    grid-template-columns: 1fr;
+  }
+
+  .form-ingrediente {
+    grid-template-columns: 1fr;
+  }
+
+  .form-ingrediente
+    .form-campo:last-child {
+    grid-column: auto;
+  }
+
+  .form-item-grupo {
+    padding: 15px;
+  }
+
+  .form-tempo-campos {
+    gap: 10px;
+  }
+
+  .form-receita
+    .form-campo
+    .form-tempo-item label {
+    left: 10px;
+    width: 60px;
+    font-size: 11px;
+  }
+
+  .form-receita
+    .form-campo
+    .form-tempo-item input {
+    padding-left: 77px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 390px) {
+  .form-tempo-campos {
+    gap: 8px;
+  }
+
+  .form-receita
+    .form-campo
+    .form-tempo-item label {
+    left: 9px;
+    width: 54px;
+    font-size: 11px;
+  }
+
+  .form-receita
+    .form-campo
+    .form-tempo-item input {
+    padding-left: 68px;
+    padding-right: 5px;
+    font-size: 13px;
+  }
+
+  .form-navegacao {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .form-navegacao button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-receita *,
+  .form-receita *::before,
+  .form-receita *::after {
+    transition: none;
+  }
+}

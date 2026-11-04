@@ -1,0 +1,992 @@
+
+/* ==========================================
+   MY KITCHEN - AUTENTICAÇÃO
+========================================== */
+
+.auth-pagina {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(0, 0.95fr);
+
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+
+  color: #432b21;
+  background: #fffaf6;
+}
+
+.auth-pagina *,
+.auth-pagina *::before,
+.auth-pagina *::after {
+  box-sizing: border-box;
+}
+
+.auth-pagina button,
+.auth-pagina input {
+  font: inherit;
+}
+
+/* ==========================================
+   1. APRESENTAÇÃO
+========================================== */
+
+.auth-apresentacao {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  padding:
+    35px
+    clamp(28px, 3.8vw, 65px)
+    0;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 83% 34%,
+      rgba(255, 215, 185, 0.7),
+      transparent 55%
+    ),
+    linear-gradient(
+      145deg,
+      #fff9f3 0%,
+      #f7e8d8 100%
+    );
+}
+
+/* Formas decorativas do fundo */
+.auth-apresentacao::before {
+  content: "";
+
+  position: absolute;
+  right: -17%;
+  bottom: 12%;
+  z-index: -1;
+
+  width: 76%;
+  aspect-ratio: 1;
+
+  border-radius: 53% 47% 55% 45%;
+  background: rgba(235, 192, 155, 0.22);
+
+  transform: rotate(-18deg);
+}
+
+.auth-apresentacao::after {
+  content: "";
+
+  position: absolute;
+  left: -28%;
+  bottom: -43%;
+  z-index: -1;
+
+  width: 75%;
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ==========================================
+   2. LOGO
+========================================== */
+
+.auth-logo {
+  position: relative;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  width: fit-content;
+
+  color: #4c2e21;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.auth-logo-icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #c96b2b;
+}
+
+/* ==========================================
+   3. TEXTO DE APRESENTAÇÃO
+========================================== */
+
+.auth-introducao {
+  position: relative;
+  z-index: 2;
+
+  max-width: 590px;
+
+  margin-top: clamp(60px, 10vh, 130px);
+}
+
+.auth-etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+
+  color: #bc6331;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.1px;
+}
+
+.auth-etiqueta::after {
+  content: "";
+
+  display: block;
+
+  width: 36px;
+  height: 2px;
+
+  background: #d18451;
+}
+
+/* Frase principal */
+.auth-introducao h1 {
+  margin: 26px 0 20px;
+
+  color: #582e20;
+  font-size: clamp(41px, 4.1vw, 69px);
+  font-weight: 800;
+  line-height: 1.075;
+  letter-spacing: -2px;
+}
+
+/* Palavra especial em laranja */
+.auth-introducao h1 em {
+  font-style: normal;
+  color: #c66d34;
+}
+
+.auth-introducao > p {
+  max-width: 465px;
+  margin: 0;
+
+  color: #776156;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* ==========================================
+   4. ILUSTRAÇÃO E BENEFÍCIOS
+========================================== */
+
+.auth-cena {
+  position: relative;
+
+  display: flex;
+  flex: 1;
+  align-items: center;
+
+  min-height: 330px;
+  margin-top: 35px;
+}
+
+/* Lista de benefícios */
+.auth-beneficios {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 49%;
+
+  margin: 0;
+  padding: 0 0 45px;
+
+  list-style: none;
+}
+
+.auth-beneficios li {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  min-width: 0;
+}
+
+/* Ícones dos benefícios */
+.auth-beneficios li > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 49px;
+  height: 49px;
+
+  border-radius: 14px;
+
+  background: #ffe9d6;
+  color: #cb6c2c;
+}
+
+/* Texto dos benefícios */
+.auth-beneficios strong {
+  color: #51372a;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+/* Imagem principal */
+.auth-ilustracao {
+  position: absolute;
+
+  right: -8%;
+  bottom: 18px;
+  z-index: 1;
+
+  display: block;
+
+  width: min(80%, 670px);
+  height: auto;
+  max-height: 112%;
+
+  object-fit: contain;
+  object-position: bottom right;
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ==========================================
+   5. ÁREA DO FORMULÁRIO
+========================================== */
+
+.auth-area-formulario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+
+  padding:
+    45px
+    clamp(24px, 4.6vw, 85px);
+
+  background:
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(244, 219, 198, 0.25),
+      transparent 45%
+    ),
+    #fffdfb;
+}
+
+/* Card do formulário */
+.auth-caixa {
+  position: relative;
+
+  width: 100%;
+  max-width: 545px;
+
+  padding: clamp(25px, 3.3vw, 50px);
+
+  border: 1px solid #ebdacd;
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 15px 50px rgba(111, 70, 42, 0.075);
+}
+
+/* ==========================================
+   6. CABEÇALHO DO FORMULÁRIO
+========================================== */
+
+.auth-cabecalho {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.auth-cabecalho h2 {
+  margin: 0 0 11px;
+
+  color: #552d20;
+  font-size: clamp(27px, 2.6vw, 36px);
+  font-weight: 800;
+  line-height: 1.23;
+  letter-spacing: -0.9px;
+}
+
+.auth-cabecalho p {
+  margin: 0;
+
+  color: #857268;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* Detalhe decorativo */
+.auth-detalhe {
+  position: absolute;
+  top: -14px;
+  right: 8px;
+
+  width: 26px;
+  height: 26px;
+
+  border-top: 3px solid #dd7b3b;
+  border-right: 3px solid #dd7b3b;
+  border-radius: 0 15px 0 0;
+
+  transform: rotate(15deg);
+  opacity: 0.65;
+}
+
+/* ==========================================
+   7. BOTÃO DO GOOGLE
+========================================== */
+
+.auth-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  min-height: 51px;
+
+  padding: 12px 15px;
+
+  border: 1px solid #d8c7b9;
+  border-radius: 11px;
+
+  background: #ffffff;
+  color: #493126;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.auth-google:hover:not(:disabled) {
+  background: #fff9f3;
+  border-color: #cda886;
+}
+
+.auth-google svg {
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   8. DIVISOR
+========================================== */
+
+.auth-divisor {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin: 25px 0;
+
+  color: #97867b;
+  font-size: 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.auth-divisor::before,
+.auth-divisor::after {
+  content: "";
+
+  flex: 1;
+  height: 1px;
+
+  background: #e8dcd1;
+}
+
+/* ==========================================
+   9. CAMPOS DO FORMULÁRIO
+========================================== */
+
+.auth-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  min-width: 0;
+}
+
+.auth-campo label {
+  color: #482c20;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Caixa com ícone e input */
+.auth-input-grupo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  width: 100%;
+  min-height: 49px;
+
+  padding: 0 13px;
+
+  border: 1px solid #ddcec2;
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+/* Destaque ao selecionar */
+.auth-input-grupo:focus-within {
+  border-color: #d87437;
+
+  box-shadow:
+    0 0 0 3px rgba(226, 119, 55, 0.13);
+}
+
+/* Ícone à esquerda */
+.auth-input-grupo > svg {
+  flex-shrink: 0;
+  color: #a0836f;
+}
+
+/* Campo de digitação */
+.auth-input-grupo input {
+  display: block;
+  flex: 1;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 47px;
+
+  padding: 10px 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+  color: #3a2922;
+
+  font-size: 14px;
+}
+
+.auth-input-grupo input::placeholder {
+  color: #aa9a90;
+}
+
+/* ==========================================
+   10. MOSTRAR E OCULTAR SENHA
+========================================== */
+
+.auth-mostrar-senha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 33px;
+  height: 33px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #a16d4b;
+
+  cursor: pointer;
+}
+
+.auth-mostrar-senha:hover:not(:disabled) {
+  background: #fff0e5;
+}
+
+/* ==========================================
+   11. RECUPERAR SENHA
+========================================== */
+
+.auth-opcoes {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: -7px;
+}
+
+.auth-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: #c3632d;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.auth-link:hover:not(:disabled) {
+  color: #914216;
+  text-decoration: underline;
+}
+
+/* ==========================================
+   12. MENSAGENS DE ERRO E SUCESSO
+========================================== */
+
+.auth-erro,
+.auth-sucesso {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  padding: 13px 14px;
+
+  border-radius: 11px;
+
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.auth-erro svg,
+.auth-sucesso svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.auth-erro {
+  border: 1px solid #f0c1b9;
+
+  background: #fff0ed;
+  color: #aa3b2c;
+}
+
+.auth-sucesso {
+  border: 1px solid #cdddca;
+
+  background: #f1f8ed;
+  color: #446d3b;
+}
+
+/* ==========================================
+   13. BOTÃO PRINCIPAL
+========================================== */
+
+.auth-enviar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  min-height: 52px;
+
+  margin-top: 3px;
+  padding: 12px 20px;
+
+  border: none;
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #cd713a,
+      #de8c59
+    );
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    filter 0.2s,
+    transform 0.2s;
+}
+
+.auth-enviar:hover:not(:disabled) {
+  filter: brightness(0.94);
+  transform: translateY(-1px);
+}
+
+.auth-google:disabled,
+.auth-enviar:disabled,
+.auth-mostrar-senha:disabled,
+.auth-link:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   14. LINKS ABAIXO DO FORMULÁRIO
+========================================== */
+
+.auth-rodape-alternar {
+  margin-top: 23px;
+
+  color: #806e64;
+  font-size: 13px;
+  text-align: center;
+}
+
+.auth-rodape-alternar p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.auth-voltar {
+  margin: 0 auto;
+}
+
+/* ==========================================
+   15. RESPONSIVIDADE - NOTEBOOKS
+========================================== */
+
+@media (max-width: 1150px) {
+  .auth-apresentacao {
+    padding-inline: 30px;
+  }
+
+  .auth-introducao h1 {
+    font-size: clamp(38px, 4vw, 53px);
+  }
+
+  .auth-beneficios {
+    gap: 18px;
+    width: 51%;
+  }
+
+  .auth-beneficios strong {
+    font-size: 12px;
+  }
+
+  .auth-ilustracao {
+    right: -10%;
+    bottom: 10px;
+    width: 82%;
+  }
+
+  .auth-area-formulario {
+    padding: 30px 24px;
+  }
+}
+
+/* ==========================================
+   16. RESPONSIVIDADE - TABLETS
+========================================== */
+
+@media (max-width: 900px) {
+  .auth-pagina {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-apresentacao {
+    min-height: 0;
+
+    padding: 30px 7% 0;
+  }
+
+  .auth-introducao {
+    margin-top: 45px;
+    max-width: 580px;
+  }
+
+  .auth-introducao h1 {
+    font-size: clamp(37px, 6vw, 54px);
+  }
+
+  .auth-cena {
+    min-height: 265px;
+    margin-top: 18px;
+  }
+
+  .auth-beneficios {
+    width: 48%;
+    padding-bottom: 20px;
+  }
+
+  .auth-ilustracao {
+    right: -1%;
+    bottom: -6px;
+
+    width: min(60%, 520px);
+  }
+
+  .auth-area-formulario {
+    padding: 42px 20px 70px;
+  }
+
+  .auth-caixa {
+    max-width: 560px;
+    padding: 37px;
+  }
+}
+
+/* ==========================================
+   17. RESPONSIVIDADE - CELULARES
+========================================== */
+
+@media (max-width: 600px) {
+  .auth-apresentacao {
+    padding: 24px 22px 0;
+  }
+
+  /* Logo */
+  .auth-logo {
+    font-size: 24px;
+  }
+
+  /* Texto principal */
+  .auth-introducao {
+    margin-top: 38px;
+  }
+
+  .auth-etiqueta {
+    font-size: 10px;
+    letter-spacing: 1.4px;
+  }
+
+  .auth-etiqueta::after {
+    width: 20px;
+  }
+
+  .auth-introducao h1 {
+    margin: 19px 0 15px;
+
+    font-size: clamp(34px, 8vw, 42px);
+    letter-spacing: -1px;
+  }
+
+  .auth-introducao > p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* ======================================
+     IMAGEM À DIREITA E BENEFÍCIOS À ESQUERDA
+  ====================================== */
+
+  .auth-cena {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    flex: none;
+
+    min-height: 235px;
+    margin-top: 18px;
+    padding: 15px 0;
+  }
+
+  /* Benefícios ficam à esquerda */
+  .auth-beneficios {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+
+    width: 51%;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  .auth-beneficios li {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .auth-beneficios li > span {
+    width: 39px;
+    height: 39px;
+
+    border-radius: 11px;
+  }
+
+  .auth-beneficios li > span svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .auth-beneficios strong {
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+
+  /* Ilustração deslocada para a direita */
+  .auth-ilustracao {
+    position: absolute;
+
+    right: -16%;
+    bottom: 8px;
+    z-index: 1;
+
+    display: block;
+
+    width: 65%;
+    max-width: none;
+    max-height: 260px;
+    height: auto;
+
+    margin: 0;
+
+    object-fit: contain;
+    object-position: bottom right;
+
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ======================================
+     FORMULÁRIO
+  ====================================== */
+
+  .auth-area-formulario {
+    padding: 25px 15px 45px;
+  }
+
+  .auth-caixa {
+    padding: 27px 20px;
+    border-radius: 18px;
+  }
+
+  .auth-cabecalho h2 {
+    font-size: 27px;
+  }
+
+  .auth-cabecalho p {
+    font-size: 13px;
+  }
+
+  .auth-divisor {
+    gap: 9px;
+    font-size: 11px;
+  }
+}
+
+/* ==========================================
+   18. CELULARES PEQUENOS
+   Mantém o layout empilhado
+========================================== */
+
+@media (max-width: 390px) {
+  .auth-apresentacao {
+    padding-inline: 18px;
+  }
+
+  .auth-introducao h1 {
+    font-size: 33px;
+  }
+
+  /* Empilha imagem e benefícios */
+  .auth-cena {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 0;
+    margin-top: 14px;
+    padding: 0;
+  }
+
+  /* Imagem centralizada */
+  .auth-ilustracao {
+    position: relative;
+
+    right: auto;
+    bottom: auto;
+
+    order: 0;
+
+    width: min(78%, 300px);
+    max-width: 100%;
+    max-height: none;
+    height: auto;
+
+    margin: 0 auto -9px;
+  }
+
+  /* Benefícios abaixo da ilustração */
+  .auth-beneficios {
+    order: 1;
+
+    width: 100%;
+    gap: 12px;
+
+    padding-bottom: 22px;
+  }
+
+  .auth-beneficios li > span {
+    width: 40px;
+    height: 40px;
+  }
+
+  .auth-beneficios strong {
+    font-size: 12px;
+  }
+
+  .auth-caixa {
+    padding: 24px 18px;
+  }
+}
+
+/* ==========================================
+   19. ACESSIBILIDADE
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-pagina button,
+  .auth-input-grupo {
+    transition: none;
+  }
+}

@@ -1,0 +1,877 @@
+
+/* ==========================================
+   MY KITCHEN - MINHA CONTA
+========================================== */
+
+.perfil-pagina {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+  padding: 38px 32px 85px;
+
+  color: #35261f;
+}
+
+.perfil-pagina *,
+.perfil-pagina *::before,
+.perfil-pagina *::after,
+.conta-recuperacao-pagina *,
+.conta-recuperacao-pagina *::before,
+.conta-recuperacao-pagina *::after {
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   1. VOLTAR E CABEÇALHO
+========================================== */
+
+.conta-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 0;
+  margin-bottom: 40px;
+
+  border: none;
+  background: transparent;
+
+  color: #b76b3a;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.conta-voltar:hover:not(:disabled) {
+  color: #8c431f;
+}
+
+.conta-voltar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.conta-cabecalho {
+  margin-bottom: 31px;
+}
+
+.conta-etiqueta {
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: #c47747;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.conta-cabecalho h1 {
+  margin: 0 0 13px;
+
+  color: #552d20;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.conta-cabecalho p {
+  margin: 0;
+
+  color: #786a60;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   2. CARTÕES
+========================================== */
+
+.conta-card {
+  width: 100%;
+
+  margin-bottom: 25px;
+  padding: 34px;
+
+  border: 1px solid #ebdfd4;
+  border-radius: 19px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 28px rgba(69, 43, 27, 0.035);
+}
+
+/* ==========================================
+   3. IDENTIFICAÇÃO DO PERFIL
+========================================== */
+
+.conta-perfil-topo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  padding-bottom: 27px;
+  margin-bottom: 28px;
+
+  border-bottom: 1px solid #eee3d9;
+}
+
+.conta-avatar {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 83px;
+  height: 83px;
+
+  border: 3px solid #fff4e9;
+  border-radius: 50%;
+
+  background: #f3e1d1;
+  color: #9b623e;
+
+  font-size: 29px;
+  font-weight: 800;
+}
+
+.conta-avatar img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.conta-avatar-camera {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 29px;
+  height: 29px;
+
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+
+  background: #e27737;
+  color: #ffffff;
+}
+
+.conta-perfil-identificacao {
+  min-width: 0;
+}
+
+.conta-perfil-identificacao h2 {
+  margin: 0 0 6px;
+
+  color: #432c20;
+  font-size: 21px;
+  font-weight: 800;
+  line-height: 1.3;
+
+  overflow-wrap: anywhere;
+}
+
+.conta-perfil-identificacao p {
+  margin: 0;
+
+  color: #927666;
+  font-size: 14px;
+
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   4. FORMULÁRIO DO PERFIL
+========================================== */
+
+.conta-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.conta-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
+  min-width: 0;
+}
+
+.conta-campo > label {
+  color: #35261f;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.conta-campo > small {
+  color: #8c7a6c;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Campos simples */
+.conta-campo > input {
+  display: block;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 14px;
+
+  border: 1px solid #e4dacf;
+  border-radius: 10px;
+
+  outline: none;
+  background: #ffffff;
+  color: #35261f;
+
+  font: inherit;
+  font-size: 14px;
+}
+
+.conta-campo > input:focus {
+  border-color: #e27737;
+
+  box-shadow:
+    0 0 0 3px rgba(226, 119, 55, 0.12);
+}
+
+.conta-campo > input:disabled {
+  background: #f6f3ef;
+  color: #927a69;
+  cursor: not-allowed;
+}
+
+/* Input com ícone */
+.conta-input-simples {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  width: 100%;
+  min-height: 48px;
+  padding: 0 13px;
+
+  border: 1px solid #e4dacf;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.conta-input-simples:focus-within {
+  border-color: #e27737;
+
+  box-shadow:
+    0 0 0 3px rgba(226, 119, 55, 0.12);
+}
+
+.conta-input-simples > svg {
+  flex-shrink: 0;
+  color: #a0836f;
+}
+
+.conta-input-simples > input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+
+  margin: 0;
+  padding: 10px 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+  color: #35261f;
+
+  font: inherit;
+  font-size: 14px;
+}
+
+.conta-input-simples > input::placeholder {
+  color: #aa9b90;
+}
+
+.conta-input-simples > input:disabled {
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   5. FOTO DE PERFIL
+========================================== */
+
+.conta-foto-secao {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  padding-bottom: 25px;
+
+  border-bottom: 1px solid #eee3d9;
+}
+
+.conta-foto-secao h3 {
+  margin: 0 0 7px;
+
+  color: #503428;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.conta-foto-secao p {
+  max-width: 500px;
+  margin: 0;
+
+  color: #847367;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+/* Input acessível, mas visualmente oculto */
+.conta-input-arquivo {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Ações da fotografia */
+.conta-foto-acoes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 11px;
+}
+
+.conta-botao-foto,
+.conta-botao-remover-foto {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 42px;
+  padding: 10px 15px;
+
+  border-radius: 10px;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+/* Escolher fotografia */
+.conta-botao-foto {
+  border: 1px solid #eac7aa;
+  background: #fff2e7;
+  color: #ad6538;
+}
+
+.conta-botao-foto:hover {
+  background: #ffe7d5;
+}
+
+/* Foco ao usar teclado */
+.conta-input-arquivo:focus-visible
+  + .conta-botao-foto {
+  outline: 3px solid #e27737;
+  outline-offset: 3px;
+}
+
+/* Remover / cancelar */
+.conta-botao-remover-foto {
+  border: 1px solid #e6ded6;
+  background: #ffffff;
+  color: #79695d;
+}
+
+.conta-botao-remover-foto:hover:not(:disabled) {
+  background: #f8f3ee;
+}
+
+.conta-botao-remover-foto:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Texto auxiliar da foto */
+.conta-foto-ajuda {
+  color: #8a765f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   6. SALVAR ALTERAÇÕES
+========================================== */
+
+.conta-salvar-area {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 2px;
+}
+
+.conta-botao-salvar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 45px;
+  padding: 12px 19px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #df8b58;
+  color: #ffffff;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.conta-botao-salvar:hover:not(:disabled) {
+  background: #c76f39;
+}
+
+.conta-botao-salvar:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Mostrar ou ocultar senha */
+.conta-mostrar-senha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #98745c;
+
+  cursor: pointer;
+}
+
+.conta-mostrar-senha:hover:not(:disabled) {
+  background: #fff2e7;
+}
+
+/* ==========================================
+   7. MENSAGENS
+========================================== */
+
+.conta-mensagem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  margin: 0;
+  padding: 14px 15px;
+
+  border: 1px solid transparent;
+  border-radius: 11px;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.conta-mensagem > svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.conta-mensagem.sucesso {
+  border-color: #c9ddc5;
+
+  background: #f1f8ee;
+  color: #446d3b;
+}
+
+.conta-mensagem.erro {
+  border-color: #f0c1b9;
+
+  background: #fff0ed;
+  color: #ad4032;
+}
+
+.conta-mensagem.aviso {
+  border-color: #ead9ae;
+
+  background: #fff8e7;
+  color: #856126;
+}
+
+/* ==========================================
+   8. FORMAS DE ACESSO
+========================================== */
+
+.conta-acesso-card {
+  margin-top: 25px;
+}
+
+.conta-secao-titulo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding-bottom: 22px;
+  margin-bottom: 23px;
+
+  border-bottom: 1px solid #eee3d9;
+}
+
+.conta-secao-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 47px;
+  height: 47px;
+
+  border-radius: 13px;
+
+  background: #f2eee7;
+  color: #927257;
+}
+
+.conta-secao-titulo h2 {
+  margin: 0 0 7px;
+
+  color: #552d20;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.conta-secao-titulo p {
+  margin: 0;
+
+  color: #89786b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Provedor Google ou e-mail */
+.conta-provedor {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 17px;
+
+  border: 1px solid #eee5db;
+  border-radius: 12px;
+
+  background: #fdfaf6;
+}
+
+.conta-provedor + .conta-provedor {
+  margin-top: 12px;
+}
+
+.conta-provedor-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 43px;
+  height: 43px;
+
+  border: 1px solid #eee3db;
+  border-radius: 11px;
+
+  background: #ffffff;
+}
+
+.conta-provedor-icone.email {
+  background: #fff1e6;
+  color: #c47747;
+}
+
+.conta-provedor-texto {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.conta-provedor-texto strong {
+  color: #503428;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.conta-provedor-texto small {
+  color: #86766c;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.conta-provedor-status {
+  flex-shrink: 0;
+
+  padding: 7px 11px;
+
+  border-radius: 20px;
+
+  background: #edf4e9;
+  color: #55764b;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* Aviso para contas apenas Google */
+.conta-acesso-ajuda {
+  margin: 20px 0 0;
+
+  color: #86766c;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   9. ALTERAÇÃO DE SENHA
+========================================== */
+
+.conta-senha-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  margin-top: 27px;
+  padding-top: 26px;
+
+  border-top: 1px solid #eee3d9;
+}
+
+.conta-senha-formulario h3 {
+  margin: 0 0 -9px;
+
+  color: #503428;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.conta-senha-formulario > p:not(.conta-mensagem) {
+  margin: 0;
+
+  color: #86766c;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   10. REDEFINIÇÃO DE SENHA
+========================================== */
+
+.conta-recuperacao-pagina {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+  min-height: 100svh;
+
+  padding: 30px 18px;
+
+  background:
+    radial-gradient(
+      circle at 5% 5%,
+      #ffe8d7,
+      transparent 40%
+    ),
+    #faf7f3;
+}
+
+.conta-recuperacao-card {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+
+  width: 100%;
+  max-width: 475px;
+
+  padding: 35px;
+
+  border: 1px solid #ebdfd4;
+  border-radius: 19px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 15px 45px rgba(69, 43, 27, 0.08);
+}
+
+.conta-recuperacao-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 55px;
+  height: 55px;
+
+  border-radius: 15px;
+
+  background: #fff0e3;
+  color: #cb7039;
+}
+
+.conta-recuperacao-card h1 {
+  margin: 0;
+
+  color: #552d20;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.conta-recuperacao-card > p:not(.conta-mensagem) {
+  margin: -10px 0 5px;
+
+  color: #86766c;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.conta-recuperacao-botao {
+  width: 100%;
+  margin-top: 7px;
+}
+
+/* ==========================================
+   11. RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 700px) {
+  .perfil-pagina {
+    padding: 28px 20px 60px;
+  }
+
+  .conta-card {
+    padding: 25px 22px;
+    border-radius: 16px;
+  }
+
+  .conta-voltar {
+    margin-bottom: 29px;
+  }
+
+  .conta-perfil-topo {
+    gap: 14px;
+  }
+
+  .conta-avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  .conta-perfil-identificacao h2 {
+    font-size: 18px;
+  }
+
+  .conta-perfil-identificacao p {
+    font-size: 12px;
+  }
+
+  .conta-secao-titulo h2 {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 480px) {
+  .perfil-pagina {
+    padding: 25px 15px 50px;
+  }
+
+  .conta-card {
+    padding: 21px 17px;
+  }
+
+  .conta-perfil-topo {
+    align-items: flex-start;
+  }
+
+  .conta-perfil-identificacao {
+    padding-top: 8px;
+  }
+
+  .conta-foto-acoes {
+    align-items: stretch;
+  }
+
+  .conta-botao-foto,
+  .conta-botao-remover-foto {
+    flex: 1;
+  }
+
+  .conta-salvar-area {
+    justify-content: stretch;
+  }
+
+  .conta-botao-salvar {
+    width: 100%;
+  }
+
+  .conta-provedor {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .conta-provedor-status {
+    margin-left: 53px;
+  }
+
+  .conta-recuperacao-card {
+    padding: 25px 20px;
+  }
+}

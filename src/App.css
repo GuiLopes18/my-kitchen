@@ -1,0 +1,1299 @@
+
+/* ==========================================
+   MY KITCHEN - APLICAÇÃO PRINCIPAL
+========================================== */
+
+.app {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  background: #faf8f5;
+  color: #35261f;
+}
+
+.app *,
+.app *::before,
+.app *::after {
+  box-sizing: border-box;
+}
+
+.app > main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ==========================================
+   1. CABEÇALHO
+========================================== */
+
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  width: 100%;
+  min-height: 82px;
+
+  padding: 17px max(
+    24px,
+    calc((100vw - 1180px) / 2)
+  );
+
+  border-bottom: 1px solid #eee4da;
+
+  background: rgba(255, 253, 250, 0.97);
+
+  backdrop-filter: blur(12px);
+}
+
+.cabecalho .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: #552d20;
+
+  font: inherit;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+
+  cursor: pointer;
+}
+
+.logo-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #c87541;
+}
+
+/* ==========================================
+   2. NAVEGAÇÃO PRINCIPAL
+========================================== */
+
+.menu-principal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.menu-principal .menu-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+  padding: 10px 17px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+  color: #736255;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.menu-principal .menu-link:hover {
+  background: #fff1e5;
+  color: #ad6338;
+}
+
+.menu-principal .menu-link.ativo {
+  background: #fff0e2;
+  color: #ba6633;
+}
+
+/* ==========================================
+   3. CONTA NO CABEÇALHO
+========================================== */
+
+.cabecalho-conta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  min-width: 0;
+}
+
+.perfil-usuario {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  min-width: 0;
+  padding: 4px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.perfil-usuario:hover {
+  background: #faf0e8;
+}
+
+.perfil-usuario[aria-current="page"] {
+  background: #fff1e5;
+}
+
+.perfil-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background: #e9d5c3;
+  color: #95603e;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.perfil-avatar img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.perfil-dados {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  min-width: 0;
+}
+
+.perfil-nome {
+  max-width: 165px;
+
+  overflow: hidden;
+
+  color: #503528;
+  font-size: 13px;
+  font-weight: 800;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.perfil-email {
+  max-width: 165px;
+
+  overflow: hidden;
+
+  color: #967f6f;
+  font-size: 11px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.botao-sair {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 40px;
+  padding: 10px 13px;
+
+  border: 1px solid #e9dcd0;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #8d6249;
+
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.botao-sair:hover:not(:disabled) {
+  background: #fff0e6;
+}
+
+.botao-sair:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   4. MENSAGENS GERAIS
+========================================== */
+
+.app-alerta,
+.app-aviso,
+.app-carregando {
+  width: calc(100% - 40px);
+  max-width: 1120px;
+
+  margin: 24px auto;
+  padding: 15px 18px;
+
+  border-radius: 11px;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.app-alerta {
+  border: 1px solid #efc6be;
+
+  background: #fff1ed;
+  color: #ae4032;
+}
+
+.app-aviso {
+  border: 1px solid #e9d8b1;
+
+  background: #fff8e8;
+  color: #85622c;
+}
+
+.app-carregando {
+  color: #8c7666;
+  text-align: center;
+}
+
+/* ==========================================
+   5. PÁGINA MINHAS RECEITAS
+========================================== */
+
+.receitas {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+  padding: 55px 30px 90px;
+}
+
+.titulo-secao {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.subtitulo {
+  display: inline-block;
+
+  color: #c47747;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.titulo-secao h2 {
+  margin: 10px 0 11px;
+
+  color: #552d20;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.titulo-secao p {
+  margin: 0;
+
+  color: #85776b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Botão Nova receita */
+.botao-nova-receita {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex-shrink: 0;
+
+  min-height: 45px;
+  padding: 12px 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #e27737;
+  color: #ffffff;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.botao-nova-receita:hover {
+  background: #c96029;
+}
+
+/* ==========================================
+   6. PESQUISA
+========================================== */
+
+.filtros {
+  margin: 35px 0;
+}
+
+.filtros-topo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.campo-busca {
+  width: 100%;
+  max-width: 440px;
+}
+
+.campo-busca label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #4b392f;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.busca-container {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  min-height: 49px;
+  padding: 0 15px;
+
+  border: 1px solid #e4dacf;
+  border-radius: 11px;
+
+  background: #ffffff;
+  color: #a88a75;
+}
+
+.busca-container:focus-within {
+  border-color: #e27737;
+
+  box-shadow:
+    0 0 0 3px rgba(226, 119, 55, 0.11);
+}
+
+.busca-container input {
+  flex: 1;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+
+  margin: 0;
+  padding: 10px 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+  color: #35261f;
+
+  font: inherit;
+  font-size: 14px;
+}
+
+.busca-container input::placeholder {
+  color: #a99788;
+}
+
+.contador {
+  padding-bottom: 14px;
+
+  color: #907969;
+  font-size: 13px;
+
+  white-space: nowrap;
+}
+
+/* ==========================================
+   7. FILTROS DE CATEGORIAS COM ÍCONES
+========================================== */
+
+.receitas .filtros .categorias {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 11px;
+
+  width: 100%;
+  margin-top: 23px;
+}
+
+.receitas .filtros .categorias .categoria {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  width: auto;
+  min-width: 0;
+  min-height: 43px;
+
+  margin: 0;
+  padding: 11px 16px;
+
+  border: 1px solid #e6d8cc;
+  border-radius: 11px;
+
+  background: #ffffff;
+  color: #715b4c;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.receitas .filtros .categorias .categoria svg {
+  display: block;
+  flex-shrink: 0;
+
+  width: 17px;
+  height: 17px;
+
+  color: #b66b3e;
+}
+
+.receitas .filtros .categorias
+  .categoria:hover:not(.ativa) {
+  border-color: #dfaa85;
+
+  background: #fff2e7;
+  color: #a55c30;
+}
+
+.receitas .filtros .categorias
+  .categoria.ativa {
+  border-color: #e27737;
+
+  background: #e27737;
+  color: #ffffff;
+
+  font-weight: 700;
+}
+
+.receitas .filtros .categorias
+  .categoria.ativa svg {
+  color: #ffffff;
+}
+
+.receitas .filtros .categorias
+  .categoria.ativa:hover {
+  background: #c96129;
+}
+
+.receitas .filtros .categorias
+  .categoria:focus-visible {
+  outline: 3px solid rgba(226, 119, 55, 0.45);
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   8. GRADE DE RECEITAS
+========================================== */
+
+.grid-receitas {
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.card-receita {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  border: 1px solid #ece2d8;
+  border-radius: 17px;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.card-receita:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 26px rgba(69, 43, 27, 0.07);
+}
+
+.card-imagem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 220px;
+
+  overflow: hidden;
+
+  background: #f4e8dc;
+  color: #cd936b;
+}
+
+.card-imagem img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.card-sem-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================
+   9. INFORMAÇÕES DO CARD
+========================================== */
+
+.card-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  gap: 13px;
+
+  min-height: 203px;
+  padding: 21px;
+}
+
+.card-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  width: 100%;
+}
+
+.card-categoria {
+  color: #b97549;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.card-conteudo h3 {
+  margin: 0;
+
+  color: #432c20;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+.card-informacoes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  color: #887365;
+  font-size: 12px;
+}
+
+.card-informacoes > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-informacoes svg {
+  color: #be835e;
+}
+
+.card-separador {
+  color: #c2aea0;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.card-tags .tag {
+  padding: 6px 10px;
+
+  border-radius: 7px;
+
+  background: #eef3ea;
+  color: #657d59;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Botão Ver receita */
+.card-ver-receita {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 41px;
+  margin-top: auto;
+
+  padding: 10px 15px;
+
+  border: 1px solid #f0c9aa;
+  border-radius: 9px;
+
+  background: #fff3e9;
+  color: #ad6236;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.card-ver-receita:hover {
+  background: #ffe7d4;
+}
+
+/* ==========================================
+   10. NOVO: SELO JÁ PREPAREI
+========================================== */
+
+.card-selo-preparada {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 6px 9px;
+
+  border: 1px solid #c6d9bd;
+  border-radius: 8px;
+
+  background: #edf5e9;
+  color: #55764b;
+
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.3;
+
+  white-space: nowrap;
+}
+
+.card-selo-preparada svg {
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   11. COLEÇÃO VAZIA
+========================================== */
+
+.estado-vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 58px 25px;
+
+  border: 1px solid #ede2d8;
+  border-radius: 17px;
+
+  background: #ffffff;
+  text-align: center;
+}
+
+.estado-vazio-imagem {
+  display: block;
+
+  width: 170px;
+  max-width: 100%;
+  height: auto;
+
+  margin-bottom: 22px;
+  object-fit: contain;
+}
+
+.estado-vazio h3 {
+  margin: 0 0 11px;
+
+  color: #552d20;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.estado-vazio p {
+  max-width: 450px;
+  margin: 0;
+
+  color: #89796d;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.limpar-filtros {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 43px;
+  margin-top: 22px;
+  padding: 11px 17px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #e27737;
+  color: #ffffff;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.limpar-filtros:hover {
+  background: #c96029;
+}
+
+/* ==========================================
+   12. RODAPÉ
+========================================== */
+
+.app .rodape {
+  width: 100%;
+  margin-top: 0;
+
+  border-top: 1px solid #684639;
+
+  background:
+    radial-gradient(
+      ellipse at 10% 0%,
+      rgba(147, 91, 58, 0.18),
+      transparent 50%
+    ),
+    #422b22;
+
+  color: #fff8f1;
+}
+
+.app .rodape .rodape-conteudo {
+  display: block;
+
+  width: 100%;
+  max-width: 1180px;
+
+  margin: 0 auto;
+  padding: 55px 24px 22px;
+}
+
+.rodape-principal {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.7fr)
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  align-items: start;
+  gap: 65px;
+
+  padding-bottom: 48px;
+}
+
+/* Identidade */
+.rodape-identidade {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  min-width: 0;
+}
+
+.rodape-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+
+  background: transparent;
+  color: #fff8f1;
+
+  font: inherit;
+  cursor: pointer;
+}
+
+.rodape-logo:hover {
+  opacity: 0.85;
+}
+
+.rodape-logo-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ed9b63;
+}
+
+.rodape-logo strong {
+  color: #fff8f1;
+
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.rodape-identidade p {
+  max-width: 350px;
+  margin: 20px 0 15px;
+
+  color: #d9bfb0;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.rodape-identidade-frase {
+  color: #ed9b63;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Colunas */
+.rodape-coluna {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+
+  min-width: 0;
+}
+
+.rodape-coluna h2 {
+  margin: 3px 0 9px;
+
+  color: #fff8f1;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.rodape-coluna button {
+  display: inline-flex;
+  align-items: center;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+  color: #d9bfb0;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    color 0.2s,
+    transform 0.2s;
+}
+
+.rodape-coluna button:hover:not(:disabled) {
+  color: #ffb27d;
+  transform: translateX(3px);
+}
+
+.rodape-coluna button[aria-current="page"] {
+  color: #ffb27d;
+  font-weight: 700;
+}
+
+.rodape-coluna button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.rodape-logo:focus-visible,
+.rodape-coluna button:focus-visible {
+  outline: 2px solid #ffb27d;
+  outline-offset: 5px;
+}
+
+/* Parte inferior */
+.rodape-inferior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid
+    rgba(255, 255, 255, 0.15);
+}
+
+.rodape-inferior p {
+  margin: 0;
+
+  color: #c7a99a;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.rodape-inferior span {
+  color: #d9bfb0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   13. RESPONSIVIDADE - NOTEBOOKS
+========================================== */
+
+@media (max-width: 1050px) {
+  .cabecalho {
+    gap: 14px;
+    padding-inline: 25px;
+  }
+
+  .perfil-email {
+    max-width: 120px;
+  }
+
+  .rodape-principal {
+    gap: 35px;
+  }
+}
+
+/* ==========================================
+   14. RESPONSIVIDADE - TABLETS
+========================================== */
+
+@media (max-width: 900px) {
+  .grid-receitas {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .perfil-dados {
+    display: none;
+  }
+
+  .rodape-principal {
+    grid-template-columns:
+      minmax(0, 1.5fr)
+      minmax(0, 1fr)
+      minmax(0, 1fr);
+
+    gap: 30px;
+  }
+
+  .app .rodape .rodape-conteudo {
+    padding: 45px 30px 22px;
+  }
+
+  .receitas .filtros .categorias {
+    gap: 9px;
+  }
+
+  .receitas .filtros .categorias .categoria {
+    min-height: 42px;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+}
+
+/* ==========================================
+   15. RESPONSIVIDADE - CELULARES
+========================================== */
+
+@media (max-width: 600px) {
+  .cabecalho {
+    flex-wrap: wrap;
+
+    min-height: 0;
+    padding: 14px 18px;
+  }
+
+  .cabecalho .logo {
+    font-size: 19px;
+  }
+
+  .logo-icone svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .menu-principal {
+    order: 3;
+
+    width: 100%;
+    justify-content: center;
+
+    border-top: 1px solid #f1e8e0;
+    padding-top: 9px;
+  }
+
+  .menu-principal .menu-link {
+    flex: 1;
+    font-size: 13px;
+  }
+
+  .cabecalho-conta {
+    gap: 7px;
+  }
+
+  .perfil-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .botao-sair {
+    min-height: 36px;
+    padding: 8px 10px;
+  }
+
+  .botao-sair span {
+    display: none;
+  }
+
+  .receitas {
+    padding: 40px 20px 70px;
+  }
+
+  .titulo-secao {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 19px;
+  }
+
+  .titulo-secao h2 {
+    font-size: 27px;
+  }
+
+  .filtros-topo {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .campo-busca {
+    max-width: none;
+  }
+
+  .contador {
+    padding-bottom: 0;
+  }
+
+  .receitas .filtros .categorias {
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .receitas .filtros .categorias .categoria {
+    min-height: 41px;
+
+    padding: 10px 12px;
+    gap: 7px;
+
+    border-radius: 10px;
+    font-size: 12px;
+  }
+
+  .receitas .filtros .categorias .categoria svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .grid-receitas {
+    grid-template-columns: 1fr;
+  }
+
+  .card-imagem {
+    height: 220px;
+  }
+
+  /* Rodapé mobile */
+  .app .rodape .rodape-conteudo {
+    padding: 40px 22px 23px;
+  }
+
+  .rodape-principal {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    column-gap: 24px;
+    row-gap: 35px;
+
+    padding-bottom: 35px;
+  }
+
+  .rodape-identidade {
+    grid-column: 1 / -1;
+  }
+
+  .rodape-identidade p {
+    max-width: 330px;
+    margin-top: 15px;
+  }
+
+  .rodape-coluna {
+    gap: 13px;
+  }
+
+  .rodape-inferior {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+
+    padding-top: 20px;
+  }
+}
+
+/* ==========================================
+   16. CELULARES PEQUENOS
+========================================== */
+
+@media (max-width: 390px) {
+  .cabecalho {
+    padding-inline: 14px;
+  }
+
+  .receitas {
+    padding-inline: 15px;
+  }
+
+  .receitas .filtros .categorias {
+    gap: 7px;
+  }
+
+  .receitas .filtros .categorias .categoria {
+    padding: 9px 10px;
+    gap: 6px;
+
+    font-size: 11px;
+  }
+
+  .receitas .filtros .categorias .categoria svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .app .rodape .rodape-conteudo {
+    padding: 35px 18px 20px;
+  }
+
+  .rodape-principal {
+    gap: 30px 15px;
+  }
+
+  .rodape-coluna h2 {
+    font-size: 14px;
+  }
+
+  .rodape-coluna button {
+    font-size: 12px;
+  }
+
+  .rodape-inferior p,
+  .rodape-inferior span {
+    font-size: 11px;
+  }
+}
+
+/* ==========================================
+   17. ACESSIBILIDADE
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .card-receita,
+  .rodape-logo,
+  .rodape-coluna button,
+  .receitas .filtros .categorias .categoria {
+    transition: none;
+  }
+
+  .card-receita:hover,
+  .rodape-coluna button:hover {
+    transform: none;
+  }
+}

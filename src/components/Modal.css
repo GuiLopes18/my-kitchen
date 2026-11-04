@@ -1,0 +1,486 @@
+
+/* ==========================================
+   MY KITCHEN - MODAL REUTILIZÁVEL
+========================================== */
+
+.mk-modal {
+  position: fixed;
+  inset: 0;
+
+  width: calc(100% - 32px);
+  max-width: 520px;
+  max-height: 90vh;
+
+  margin: auto;
+  padding: 28px;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  border: 1px solid #eee1d8;
+  border-radius: 18px;
+
+  background: #fffdfc;
+  color: #35261f;
+
+  box-shadow:
+    0 24px 75px rgba(47, 27, 22, 0.25);
+}
+
+.mk-modal *,
+.mk-modal *::before,
+.mk-modal *::after {
+  box-sizing: border-box;
+}
+
+/* Fundo escurecido */
+.mk-modal::backdrop {
+  background: rgba(30, 22, 19, 0.65);
+  backdrop-filter: blur(3px);
+}
+
+/* ==========================================
+   1. CABEÇALHO
+========================================== */
+
+.mk-modal-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.mk-modal-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+
+  border-radius: 15px;
+
+  background: #f4eee7;
+  color: #9c785c;
+}
+
+/* Variante para ações perigosas */
+.mk-modal-perigo {
+  border-color: #f0dedb;
+}
+
+.mk-modal-perigo .mk-modal-icone {
+  background: #fff0ed;
+  color: #b04436;
+}
+
+.mk-modal-fechar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  margin-left: auto;
+  padding: 0;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #f5f2ee;
+  color: #777169;
+
+  cursor: pointer;
+}
+
+.mk-modal-fechar:hover:not(:disabled) {
+  background: #ece5de;
+}
+
+/* ==========================================
+   2. TÍTULO E DESCRIÇÃO
+========================================== */
+
+.mk-modal-titulo {
+  margin: 0 0 12px;
+
+  color: #552d20;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.mk-modal-descricao {
+  margin: 0 0 20px;
+
+  color: #786a60;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.mk-modal-corpo {
+  min-width: 0;
+}
+
+/* ==========================================
+   3. IDENTIFICAÇÃO DE UM ITEM
+========================================== */
+
+.mk-modal-identificacao {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  min-width: 0;
+  padding: 13px;
+  margin-bottom: 21px;
+
+  border: 1px solid #eee3db;
+  border-radius: 12px;
+
+  background: #faf7f3;
+}
+
+.mk-modal-identificacao img,
+.mk-modal-sem-foto {
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+
+  border-radius: 9px;
+}
+
+.mk-modal-identificacao img {
+  display: block;
+  object-fit: cover;
+}
+
+.mk-modal-sem-foto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f1e5d9;
+  color: #bd855c;
+}
+
+.mk-modal-identificacao > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  min-width: 0;
+}
+
+.mk-modal-identificacao strong {
+  color: #432c20;
+  font-size: 15px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.mk-modal-identificacao small {
+  color: #937e6f;
+  font-size: 12px;
+}
+
+/* ==========================================
+   4. ALERTAS E MENSAGENS
+========================================== */
+
+.mk-modal-aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+
+  padding: 16px;
+  margin-bottom: 22px;
+
+  border: 1px solid #f0c9c4;
+  border-radius: 11px;
+
+  background: #fff1ee;
+  color: #a43d31;
+}
+
+.mk-modal-aviso > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.mk-modal-aviso strong {
+  display: block;
+  margin-bottom: 9px;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.mk-modal-aviso p {
+  margin: 0 0 9px;
+
+  color: #80554e;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.mk-modal-aviso p:last-child {
+  margin-bottom: 0;
+}
+
+.mk-modal-erro,
+.mk-modal-processando {
+  margin: 0 0 18px;
+  padding: 13px 15px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.mk-modal-erro {
+  border: 1px solid #f0c9c4;
+  background: #fff0ed;
+  color: #a43d31;
+}
+
+.mk-modal-processando {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  background: #fff8e8;
+  color: #785b25;
+}
+
+/* ==========================================
+   5. BOTÕES
+========================================== */
+
+.mk-modal-acoes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+.mk-modal-botao-secundario,
+.mk-modal-botao-perigo,
+.mk-modal-botao-principal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 44px;
+  padding: 12px 18px;
+
+  border-radius: 10px;
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.mk-modal-botao-secundario {
+  border: 1px solid #e4ded6;
+  background: #ffffff;
+  color: #5f534b;
+}
+
+.mk-modal-botao-secundario:hover:not(:disabled) {
+  background: #f7f4ef;
+}
+
+.mk-modal-botao-perigo {
+  border: none;
+  background: #b04436;
+  color: #ffffff;
+}
+
+.mk-modal-botao-perigo:hover:not(:disabled) {
+  background: #912f25;
+}
+
+.mk-modal-botao-principal {
+  border: none;
+  background: #e27737;
+  color: #ffffff;
+}
+
+.mk-modal-botao-principal:hover:not(:disabled) {
+  background: #c65d24;
+}
+
+.mk-modal button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Indicador de carregamento */
+.mk-modal-spinner {
+  animation: mk-modal-girar 0.8s linear infinite;
+}
+
+@keyframes mk-modal-girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
+   6. NOTIFICAÇÕES DE RESULTADO
+========================================== */
+
+.receita-notificacao {
+  position: fixed;
+  top: 98px;
+  right: 24px;
+  z-index: 1000;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  width: calc(100% - 48px);
+  max-width: 420px;
+
+  padding: 16px;
+
+  border: 1px solid #dbe5d5;
+  border-radius: 13px;
+
+  background: #ffffff;
+  color: #35261f;
+
+  box-shadow:
+    0 13px 35px rgba(47, 27, 22, 0.15);
+
+  animation: mk-notificacao-entrar 0.2s ease-out;
+}
+
+.receita-notificacao > svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.receita-notificacao > span {
+  flex: 1;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.receita-notificacao.sucesso {
+  border-color: #cbdcc5;
+  background: #f5fbf2;
+  color: #466b3d;
+}
+
+.receita-notificacao.erro {
+  border-color: #efc9c3;
+  background: #fff3f0;
+  color: #a43d31;
+}
+
+.receita-notificacao.aviso {
+  border-color: #ead9ae;
+  background: #fff9eb;
+  color: #83602a;
+}
+
+.receita-notificacao-fechar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 24px;
+  height: 24px;
+  padding: 0;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+  color: inherit;
+
+  cursor: pointer;
+}
+
+.receita-notificacao-fechar:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+@keyframes mk-notificacao-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   7. RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 600px) {
+  .mk-modal {
+    width: calc(100% - 24px);
+    max-height: 90vh;
+
+    padding: 22px;
+    border-radius: 15px;
+  }
+
+  .mk-modal-titulo {
+    font-size: 23px;
+  }
+
+  .receita-notificacao {
+    top: 145px;
+    right: 12px;
+    width: calc(100% - 24px);
+  }
+}
+
+@media (max-width: 390px) {
+  .mk-modal {
+    padding: 18px;
+  }
+
+  .mk-modal-acoes {
+    flex-direction: column;
+  }
+
+  .mk-modal-botao-secundario,
+  .mk-modal-botao-perigo,
+  .mk-modal-botao-principal {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .receita-notificacao {
+    animation: none;
+  }
+
+  .mk-modal-spinner {
+    animation: none;
+  }
+}

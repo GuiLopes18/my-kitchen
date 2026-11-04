@@ -1,0 +1,1035 @@
+
+/* ==========================================
+   MY KITCHEN - DETALHES DA RECEITA
+========================================== */
+
+.detalhes-receita {
+  width: 100%;
+  max-width: 1180px;
+
+  margin: 0 auto;
+  padding: 42px 30px 85px;
+
+  color: #35261f;
+}
+
+.detalhes-receita *,
+.detalhes-receita *::before,
+.detalhes-receita *::after {
+  box-sizing: border-box;
+}
+
+.detalhes-receita button {
+  font-family: inherit;
+}
+
+/* ==========================================
+   1. VOLTAR E AÇÕES
+========================================== */
+
+.detalhes-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+
+  margin-bottom: 27px;
+}
+
+.detalhes-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  min-height: 40px;
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: #b66b3e;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.detalhes-voltar:hover {
+  color: #8d4827;
+}
+
+.detalhes-voltar svg {
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   2. BOTÕES DO TOPO
+========================================== */
+
+.detalhes-acoes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 11px;
+
+  min-width: 0;
+}
+
+.detalhes-compartilhamento {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+}
+
+.detalhes-compartilhamento > * {
+  margin-block: 0;
+}
+
+/* Editar e excluir */
+.detalhes-botao-editar,
+.detalhes-botao-excluir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 43px;
+  padding: 11px 15px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.detalhes-botao-editar svg,
+.detalhes-botao-excluir svg {
+  flex-shrink: 0;
+}
+
+.detalhes-botao-editar {
+  border: 1px solid #e5c7b0;
+
+  background: #fff2e8;
+  color: #ac6338;
+}
+
+.detalhes-botao-editar:hover:not(:disabled) {
+  background: #ffe8d7;
+  border-color: #dea77e;
+}
+
+.detalhes-botao-excluir {
+  border: 1px solid #efc9c3;
+
+  background: #fff1ee;
+  color: #b04436;
+}
+
+.detalhes-botao-excluir:hover:not(:disabled) {
+  background: #ffe0da;
+  border-color: #e3a79e;
+}
+
+.detalhes-receita button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   3. CARD PRINCIPAL
+========================================== */
+
+.detalhes-hero {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.95fr)
+    minmax(0, 1.05fr);
+
+  gap: 35px;
+  align-items: stretch;
+
+  margin-bottom: 28px;
+
+  overflow: hidden;
+
+  border: 1px solid #eee2d7;
+  border-radius: 19px;
+
+  background: #ffffff;
+}
+
+/* ==========================================
+   4. FOTOGRAFIA COM ALTURA CONTROLADA
+========================================== */
+
+/* A altura agora é limitada e não depende
+   do tamanho original da fotografia. */
+
+.detalhes-imagem {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 370px;
+  min-width: 0;
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  border: none;
+  border-radius: 0;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #fbf2e9 0%,
+      #f4e8dc 80%
+    );
+
+  color: #cd936b;
+}
+
+/* NOVO: Mostra toda a fotografia, sem cortes. */
+.detalhes-imagem img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: none;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Fotografia clicável */
+.detalhes-imagem-interativa {
+  cursor: zoom-in;
+  appearance: none;
+}
+
+.detalhes-imagem-interativa:hover {
+  background: #f5e7da;
+}
+
+/* Pequena indicação para ampliar a foto */
+.detalhes-imagem-ampliar {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 12px;
+
+  border: 1px solid rgba(116, 76, 51, 0.14);
+  border-radius: 9px;
+
+  background: rgba(255, 253, 249, 0.94);
+  color: #79553e;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.4;
+
+  box-shadow:
+    0 3px 12px rgba(70, 42, 26, 0.1);
+
+  pointer-events: none;
+
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+}
+
+.detalhes-imagem-interativa:hover
+  .detalhes-imagem-ampliar {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Receita sem fotografia */
+.detalhes-imagem-vazia {
+  color: #cd936b;
+}
+
+/* ==========================================
+   5. INFORMAÇÕES DA RECEITA
+========================================== */
+
+.detalhes-cabecalho {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  min-width: 0;
+  padding: 33px 34px 33px 0;
+}
+
+.detalhes-categoria {
+  color: #be7345;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.detalhes-cabecalho h1 {
+  margin: 0;
+
+  color: #552d20;
+
+  font-size: clamp(27px, 3vw, 39px);
+  font-weight: 800;
+  line-height: 1.2;
+
+  overflow-wrap: anywhere;
+}
+
+.detalhes-descricao {
+  margin: 0;
+
+  color: #7e6c60;
+
+  font-size: 14px;
+  line-height: 1.8;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Tempo, dificuldade e porções */
+.detalhes-metadados {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  width: 100%;
+}
+
+.detalhes-metadados span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #78695e;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.detalhes-metadados svg {
+  flex-shrink: 0;
+  color: #ba784e;
+}
+
+/* ==========================================
+   6. STATUS DE PREPARO INTEGRADO
+========================================== */
+
+.detalhes-preparo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+
+  width: 100%;
+  margin-top: 3px;
+  padding: 15px;
+
+  border: 1px solid #ebdfd4;
+  border-radius: 12px;
+
+  background: #fffaf6;
+}
+
+.detalhes-preparo.preparada {
+  border-color: #cbdcc3;
+  background: #f3f8f0;
+}
+
+.detalhes-preparo.pendente {
+  border-color: #eddfd0;
+  background: #fff8f1;
+}
+
+/* Ícone e informações */
+.detalhes-preparo-informacao {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.detalhes-preparo-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 37px;
+  height: 37px;
+
+  border-radius: 10px;
+
+  background: #ffebda;
+  color: #ba7543;
+}
+
+.detalhes-preparo.preparada
+  .detalhes-preparo-icone {
+  background: #e2eedc;
+  color: #5a7e4f;
+}
+
+.detalhes-preparo-informacao > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  min-width: 0;
+}
+
+.detalhes-preparo-informacao strong {
+  color: #684532;
+
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.detalhes-preparo.preparada
+  .detalhes-preparo-informacao strong {
+  color: #4e7044;
+}
+
+.detalhes-preparo-informacao small {
+  color: #938073;
+
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.detalhes-preparo.preparada
+  .detalhes-preparo-informacao small {
+  color: #75896d;
+}
+
+/* Marcar ou desmarcar como preparada */
+.detalhes-preparo-botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: auto;
+  max-width: 100%;
+  min-height: 38px;
+
+  padding: 9px 13px;
+
+  border: 1px solid #e0bd9f;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #ac6338;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.4;
+
+  text-align: center;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.detalhes-preparo-botao svg {
+  flex-shrink: 0;
+}
+
+.detalhes-preparo-botao:hover:not(:disabled) {
+  background: #fff0e3;
+}
+
+.detalhes-preparo.preparada
+  .detalhes-preparo-botao {
+  border-color: #c5d5bd;
+  color: #557749;
+}
+
+.detalhes-preparo.preparada
+  .detalhes-preparo-botao:hover:not(:disabled) {
+  background: #eaf3e5;
+}
+
+/* ==========================================
+   7. TAGS
+========================================== */
+
+.detalhes-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  width: 100%;
+}
+
+.detalhes-tags span {
+  padding: 7px 10px;
+
+  border-radius: 7px;
+
+  background: #edf3e9;
+  color: #657b58;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ==========================================
+   8. INGREDIENTES E PREPARO
+========================================== */
+
+.detalhes-conteudo {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+
+  align-items: start;
+  gap: 24px;
+
+  margin-bottom: 27px;
+}
+
+.detalhes-card {
+  min-width: 0;
+  padding: 26px;
+
+  border: 1px solid #ece2d8;
+  border-radius: 16px;
+
+  background: #ffffff;
+}
+
+.detalhes-card-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-bottom: 17px;
+}
+
+.detalhes-card-titulo h2 {
+  margin: 0;
+
+  color: #552d20;
+
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.detalhes-card-titulo small {
+  color: #988675;
+  font-size: 12px;
+}
+
+.detalhes-ajuda {
+  margin: 0 0 20px;
+
+  color: #907e70;
+
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+/* ==========================================
+   9. INGREDIENTES
+========================================== */
+
+.detalhes-ingredientes {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.detalhes-ingredientes li + li {
+  margin-top: 10px;
+}
+
+.detalhes-ingrediente {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 13px;
+
+  border: 1px solid #f0e8e0;
+  border-radius: 10px;
+
+  background: #fffdfa;
+
+  cursor: pointer;
+}
+
+.detalhes-ingrediente input {
+  flex-shrink: 0;
+
+  width: 18px;
+  height: 18px;
+
+  margin: 2px 0 0;
+
+  accent-color: #6d8a61;
+}
+
+.detalhes-ingrediente span {
+  color: #5a4538;
+
+  font-size: 14px;
+  line-height: 1.65;
+
+  overflow-wrap: anywhere;
+}
+
+.detalhes-ingrediente.marcado {
+  border-color: #d6e3d0;
+  background: #f3f8f0;
+}
+
+.detalhes-ingrediente.marcado span {
+  color: #899383;
+  text-decoration: line-through;
+}
+
+/* ==========================================
+   10. MODO DE PREPARO
+========================================== */
+
+.detalhes-passos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.detalhes-passo {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.detalhes-passo-numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background: #fff0e5;
+  color: #bb7344;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.detalhes-passo p {
+  margin: 5px 0 0;
+
+  color: #5e4b3f;
+
+  font-size: 14px;
+  line-height: 1.8;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   11. OBSERVAÇÕES
+========================================== */
+
+.detalhes-observacoes {
+  margin-bottom: 27px;
+  padding: 26px;
+
+  border: 1px solid #e8ddd1;
+  border-radius: 16px;
+
+  background: #fffaf4;
+}
+
+.detalhes-observacoes-titulo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  margin-bottom: 17px;
+
+  color: #b97448;
+}
+
+.detalhes-observacoes-titulo h2 {
+  margin: 0;
+
+  color: #552d20;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.detalhes-observacoes > p {
+  margin: 0;
+
+  color: #685347;
+
+  font-size: 14px;
+  line-height: 1.85;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   12. JANELA DE FOTOGRAFIA AMPLIADA
+========================================== */
+
+/* Utiliza o elemento nativo dialog. */
+.detalhes-lightbox {
+  position: fixed;
+
+  width: min(95vw, 1100px);
+  max-width: 95vw;
+  max-height: 95vh;
+  max-height: 95dvh;
+
+  margin: auto;
+  padding: 12px;
+
+  overflow: auto;
+
+  border: 1px solid #ebdccc;
+  border-radius: 16px;
+
+  background: #fffaf6;
+  color: #552d20;
+
+  box-shadow:
+    0 25px 80px rgba(20, 13, 9, 0.35);
+}
+
+/* Fundo escurecido ao ampliar */
+.detalhes-lightbox::backdrop {
+  background: rgba(24, 17, 13, 0.86);
+  backdrop-filter: blur(4px);
+}
+
+.detalhes-lightbox-conteudo {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 120px;
+
+  padding: 51px 15px 15px;
+}
+
+/* Botão para fechar a fotografia */
+.detalhes-lightbox-fechar {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 39px;
+  height: 39px;
+
+  padding: 0;
+
+  border: 1px solid #e7d9ca;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #704b34;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.detalhes-lightbox-fechar:hover {
+  background: #fff0e3;
+  color: #b76536;
+}
+
+/* Foto ampliada sem cortes */
+.detalhes-lightbox-imagem {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 100%;
+  max-height: calc(90vh - 100px);
+  max-height: calc(90dvh - 100px);
+
+  margin-inline: auto;
+
+  border-radius: 8px;
+
+  object-fit: contain;
+}
+
+/* ==========================================
+   13. RESPONSIVIDADE - TABLETS
+========================================== */
+
+@media (max-width: 900px) {
+  .detalhes-receita {
+    padding: 34px 24px 65px;
+  }
+
+  .detalhes-hero {
+    gap: 22px;
+  }
+
+  .detalhes-cabecalho {
+    padding: 26px 24px 26px 0;
+  }
+
+  /* Fotografia um pouco menor */
+  .detalhes-imagem {
+    height: 330px;
+    min-height: 0;
+  }
+
+  .detalhes-imagem img {
+    min-height: 0;
+  }
+
+  .detalhes-conteudo {
+    grid-template-columns: 1fr;
+  }
+
+  .detalhes-preparo-botao {
+    white-space: normal;
+  }
+}
+
+/* ==========================================
+   14. RESPONSIVIDADE - CELULARES
+========================================== */
+
+@media (max-width: 650px) {
+  .detalhes-receita {
+    padding: 26px 17px 55px;
+  }
+
+  .detalhes-topo {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .detalhes-voltar {
+    align-self: flex-start;
+  }
+
+  .detalhes-acoes {
+    justify-content: flex-start;
+    gap: 9px;
+
+    width: 100%;
+  }
+
+  .detalhes-botao-editar,
+  .detalhes-botao-excluir {
+    min-height: 41px;
+    padding: 10px 12px;
+
+    font-size: 12px;
+  }
+
+  /* Card principal em uma coluna */
+  .detalhes-hero {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Foto completa e com altura limitada */
+  .detalhes-imagem {
+    height: 290px;
+    min-height: 0;
+    max-height: none;
+  }
+
+  .detalhes-imagem img {
+    width: 100%;
+    height: 100%;
+
+    min-height: 0;
+    max-height: none;
+
+    object-fit: contain;
+  }
+
+  .detalhes-imagem-ampliar {
+    right: 12px;
+    bottom: 12px;
+
+    padding: 9px 11px;
+    font-size: 11px;
+  }
+
+  .detalhes-cabecalho {
+    padding: 24px;
+  }
+
+  .detalhes-cabecalho h1 {
+    font-size: 29px;
+  }
+
+  .detalhes-metadados {
+    gap: 11px;
+  }
+
+  /* Status de preparo */
+  .detalhes-preparo {
+    padding: 15px;
+  }
+
+  .detalhes-preparo-botao {
+    width: 100%;
+  }
+
+  /* Ingredientes e preparo */
+  .detalhes-card,
+  .detalhes-observacoes {
+    padding: 20px;
+  }
+
+  .detalhes-card-titulo h2 {
+    font-size: 20px;
+  }
+
+  /* Fotografia ampliada */
+  .detalhes-lightbox {
+    width: 96vw;
+    max-width: 96vw;
+    max-height: 94dvh;
+
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .detalhes-lightbox-conteudo {
+    padding: 46px 6px 6px;
+  }
+
+  .detalhes-lightbox-imagem {
+    max-height: calc(90dvh - 85px);
+  }
+}
+
+/* ==========================================
+   15. CELULARES PEQUENOS
+========================================== */
+
+@media (max-width: 390px) {
+  .detalhes-acoes {
+    align-items: stretch;
+  }
+
+  .detalhes-botao-editar,
+  .detalhes-botao-excluir {
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+
+  .detalhes-compartilhamento {
+    max-width: 100%;
+  }
+
+  .detalhes-imagem {
+    height: 260px;
+  }
+
+  .detalhes-metadados span {
+    font-size: 12px;
+  }
+
+  .detalhes-preparo-informacao strong {
+    font-size: 12px;
+  }
+}
+
+/* ==========================================
+   16. ACESSIBILIDADE
+========================================== */
+
+.detalhes-receita button:focus-visible,
+.detalhes-receita input:focus-visible {
+  outline: 3px solid rgba(226, 119, 55, 0.4);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detalhes-receita *,
+  .detalhes-receita *::before,
+  .detalhes-receita *::after {
+    transition: none;
+  }
+}

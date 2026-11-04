@@ -1,0 +1,163 @@
+
+/* Barra de ações da receita */
+.detalhe-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  margin-bottom: 30px;
+}
+
+.detalhe-toolbar .detalhe-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  margin: 0;
+  padding: 10px 0;
+}
+
+.detalhe-acoes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Botão de edição */
+.detalhe-botao-editar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 12px 16px;
+
+  border: 1px solid #db8958;
+  border-radius: 10px;
+
+  background: #fff4e9;
+  color: #a65e31;
+
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.detalhe-botao-editar:hover:not(:disabled) {
+  background: #f8e2cf;
+}
+
+/* Botão de exclusão */
+.detalhe-botao-excluir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 12px 16px;
+
+  border: 1px solid #f0c9c4;
+  border-radius: 10px;
+
+  background: #fff0ed;
+  color: #a43d31;
+
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.detalhe-botao-excluir:hover:not(:disabled) {
+  background: #ffe2dc;
+}
+
+.detalhe-botao-editar:disabled,
+.detalhe-botao-excluir:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Preparação dos ingredientes */
+.detalhe-progresso {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Campos do formulário */
+.form-conteudo-campos {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Fotografia no formulário */
+.form-foto-area {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+.form-foto-area .form-preview {
+  margin-top: 0;
+}
+
+.form-receita .form-remover-foto {
+  width: auto;
+  padding: 10px 15px;
+
+  border: 1px solid #f0c9c4;
+  border-radius: 9px;
+
+  background: #fff0ed;
+  color: #a43d31;
+
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-remover-foto:hover {
+  background: #ffe2dc;
+}
+
+/* Avisos sobre arquivos */
+.app-aviso {
+  max-width: 1130px;
+  margin: 20px auto;
+  padding: 15px 20px;
+
+  border: 1px solid #e9d7a7;
+  border-radius: 10px;
+
+  background: #fff8e8;
+  color: #785b25;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  .detalhe-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .detalhe-acoes {
+    width: 100%;
+  }
+
+  .detalhe-botao-editar,
+  .detalhe-botao-excluir {
+    flex: 1;
+    min-width: 140px;
+  }
+}
