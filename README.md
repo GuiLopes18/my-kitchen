@@ -85,20 +85,6 @@ Este repositório é o **frontend**, não uma exportação completa do banco. Pa
 
 **RLS e autorizações são medidas obrigatórias**, mesmo quando o frontend faz `.eq("user_id", usuarioId)`. Filtrar pelo usuário no navegador não substitui regras no banco.
 
-## Checklist manual após atualizar o código
-
-1. Entrar com e-mail e Google; sair; recuperar senha.
-2. Criar receita com e sem foto, passar pelas quatro etapas e salvar apenas na última.
-3. Editar uma receita existente, substituir/remover foto e testar todas as dificuldades.
-4. Marcar/desmarcar como preparada e confirmar indicadores na Home.
-5. Pesquisar e combinar filtros por nome, categoria e preparo.
-6. Compartilhar, abrir o link sem login e revogar o acesso.
-7. Testar exclusão de receita, atualização da foto de perfil e exclusão de conta.
-8. Validar computador e celular; testar recarregamento de URL direta na Vercel.
-
-## Publicação
-
-No painel da Vercel, configure `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY` como variáveis de ambiente do frontend. `vercel.json` mantém o fallback das rotas do React Router. Ajuste também no Supabase os endereços autorizados de OAuth e recuperação de senha para o domínio publicado.
 
 ## Para continuar evoluindo
 
