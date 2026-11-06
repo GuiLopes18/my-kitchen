@@ -1,0 +1,12 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+
+  <!-- Fundo laranja -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#E27737"></rect>
+
+  <!-- Chapéu de cozinheiro branco -->
+  <g transform="translate(8 8) scale(2)" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 13.87A4 4 0 0 1 6.41 6a6 6 0 0 1 11.18 0A4 4 0 0 1 18 13.87V21H6Z"></path>
+    <path d="M6 17h12"></path>
+  </g>
+</svg>
